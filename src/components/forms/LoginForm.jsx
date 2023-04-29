@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link} from 'react-router-dom'
 
 function LoginForm() {
     return (
@@ -9,10 +9,10 @@ function LoginForm() {
                     <div className="row">
                         <div className="col-lg-10 col-md-9 col-xl-7 mx-auto">
                             <div className="text-center mb-12">
-                                {/* <a class="d-inline-block" href="#">
+                                {/* <Link class="d-inline-block" to="#">
                       <img src="https://preview.webpixels.io/web/img/logos/clever-primary-sm.svg" class="h-12" alt="...">
 
-          		</a> */}
+          		</Link> */}
                                 <span className="d-inline-block d-lg-block h1 mb-lg-6 me-3">
                                     👋
                                 </span>
@@ -57,9 +57,9 @@ function LoginForm() {
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center'>
-                                    <NavLink to="/" className="btn btn-primary w-full">
+                                    <Link to="/dashboard" className="btn btn-primary w-full">
                                         Sign in
-                                    </NavLink>
+                                    </Link>
                                 </div>
                             </form>
                             <div className="py-3 text-center">
@@ -69,9 +69,9 @@ function LoginForm() {
                             </div>
                             <div className="my-6">
                                 <small>Don't have an account? </small>
-                                <a href="#" className="text-warning text-sm font-semibold">
+                                <Link to="/" className="text-warning text-sm font-semibold">
                                     Sign up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

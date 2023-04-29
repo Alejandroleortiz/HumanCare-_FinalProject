@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 
 function Sidebar() {
     return (
@@ -22,19 +22,19 @@ function Sidebar() {
                         <span className="navbar-toggler-icon" />
                     </button>
                     {/* Brand */}
-                    <a className="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                    <NavLink className="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" to="/dashboard">
                         <img
                             src="https://preview.webpixels.io/web/img/logos/clever-primary.svg"
                             alt="..."
                         />
-                    </a>
+                    </NavLink>
                     {/* User menu (mobile) */}
                     <div className="navbar-user d-lg-none">
                         {/* Dropdown */}
                         <div className="dropdown">
                             {/* Toggle */}
-                            <a
-                                href="#"
+                            <NavLink
+                                to="#"
                                 id="sidebarAvatar"
                                 role="button"
                                 data-bs-toggle="dropdown"
@@ -49,25 +49,25 @@ function Sidebar() {
                                     />
                                     <span className="avatar-child avatar-badge bg-success" />
                                 </div>
-                            </a>
+                            </NavLink>
                             {/* Menu */}
                             <div
                                 className="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="sidebarAvatar"
                             >
-                                <a href="#" className="dropdown-item">
+                                <NavLink to="#" className="dropdown-item">
                                     Profile
-                                </a>
-                                <a href="#" className="dropdown-item">
+                                </NavLink>
+                                <NavLink to="#" className="dropdown-item">
                                     Settings
-                                </a>
-                                <a href="#" className="dropdown-item">
+                                </NavLink>
+                                <NavLink to="#" className="dropdown-item">
                                     Billing
-                                </a>
+                                </NavLink>
                                 <hr className="dropdown-divider" />
-                                <a href="#" className="dropdown-item">
+                                <NavLink to="#" className="dropdown-item">
                                     Logout
-                                </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ function Sidebar() {
                             <li>
                                 <div
                                     className="nav-link text-xs font-semibold text-uppercase text-muted ls-wide"
-                                    href="#"
+                                    to="#"
                                 >
                                     Contacts
                                     <span className="badge bg-opacity-30 bg-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">
@@ -118,7 +118,7 @@ function Sidebar() {
                                 </div>
                             </li>
                             <li>
-                                <a href="#" className="nav-link d-flex align-items-center">
+                                <NavLink to="#" className="nav-link d-flex align-items-center">
                                     <div className="me-4">
                                         <div className="position-relative d-inline-block text-white">
                                             <img
@@ -140,10 +140,10 @@ function Sidebar() {
                                     <div className="ms-auto">
                                         <i className="bi bi-chat" />
                                     </div>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a href="#" className="nav-link d-flex align-items-center">
+                                <NavLink to="#" className="nav-link d-flex align-items-center">
                                     <div className="me-4">
                                         <div className="position-relative d-inline-block text-white">
                                             <span className="avatar bg-opacity-30 bg-warning text-warning rounded-circle">
@@ -163,10 +163,10 @@ function Sidebar() {
                                     <div className="ms-auto">
                                         <i className="bi bi-chat" />
                                     </div>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a href="#" className="nav-link d-flex align-items-center">
+                                <NavLink to="#" className="nav-link d-flex align-items-center">
                                     <div className="me-4">
                                         <div className="position-relative d-inline-block text-white">
                                             <img
@@ -188,7 +188,7 @@ function Sidebar() {
                                     <div className="ms-auto">
                                         <i className="bi bi-chat" />
                                     </div>
-                                </a>
+                                </NavLink>
                             </li>
                         </ul>
                         {/* Push content down */}
@@ -201,9 +201,9 @@ function Sidebar() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <NavLink className="nav-link" to="/">
                                     <i className="bi bi-box-arrow-left" /> Logout
-                                </a>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
