@@ -57,7 +57,7 @@ function LoginForm() {
                                     </div>
                                 </div>
                                 <div className='d-flex justify-content-center'>
-                                    <NavLink to="/" className="btn btn-primary w-full">
+                                    <NavLink to="/dashboard" className="btn btn-primary w-full">
                                         Sign in
                                     </NavLink>
                                 </div>

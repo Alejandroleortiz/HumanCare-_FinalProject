@@ -201,9 +201,9 @@ function Sidebar() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <NavLink className="nav-link" to="/">
                                     <i className="bi bi-box-arrow-left" /> Logout
-                                </a>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
