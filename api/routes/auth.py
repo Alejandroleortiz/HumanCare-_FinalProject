@@ -12,6 +12,8 @@ def signup():
     # Datos de la tabla "users"
     email = request.json.get('email')
     password = request.json.get('password')
+    profile_information = request.json.get('profile_information')
+    profile_picture = request.json.get('profile_picture')
     role = request.json.get('roles_id') # Datos de la tabla roles
     
     if not email:
@@ -20,8 +22,15 @@ def signup():
     if not password:
         return jsonify({ "msg": "Password is required"}), 422
     
-    if not role:
-        return jsonify({ "msg": "Role is required"}), 422
+    if not profile_information:
+        return jsonify({ "msg": "Profile information is required"}), 422
+
+    if not profile_picture:
+        return jsonify({ "msg": "Profile picture is required"}), 422
+    
+    
+    # if not role:
+    #     return jsonify({ "msg": "Role is required"}), 422
 
     user = User.query.filter_by(email=email).first()
 
@@ -32,7 +41,10 @@ def signup():
     user = User()
     user.email = email
     user.password = generate_password_hash(password)
-
+    user.profile_information = profile_information
+    user.profile_picture = profile_picture
+    user.roles_id = role
+    user.save()
     
     # Token sin vencimiento
     access_token = create_access_token(identity=user.id)
@@ -41,6 +53,7 @@ def signup():
         "access_token": access_token,
         "user": user.serialize()
     }
+    
 
     return jsonify(data), 200
 

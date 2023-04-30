@@ -5,10 +5,10 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    password = db.Column(db.String(120), unique=False, nullable=False)
     profile_information = db.Column(db.String(200), nullable=False)
     profile_picture = db.Column(db.String(150), nullable=False)
-    roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable =False)
+    roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), default=1, nullable =False)
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
     medical_appoinments = db.relationship('Medical_appoinment', foreign_keys='[Medical_appoinment.doctor_id]', backref='doctor')
     patient_appoinments = db.relationship('Medical_appoinment', foreign_keys='[Medical_appoinment.user_id]', backref='patient')
@@ -46,6 +46,17 @@ class Role(db.Model):
             "name": self.name,
         }
         
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        
 class Medical_file(db.Model):
     __tablename__ = 'medical_file'
     id = db.Column(db.Integer, primary_key=True)
@@ -81,7 +92,7 @@ class Medical_record(db.Model):
     age = db.Column(db.Integer, nullable=False)
     identity_card = db.Column(db.Integer, nullable=False)
     adress = db.Column(db.String(200), nullable=False)
-    phone_number =db.Column(db.Integer, nullable=False)
+    phone_number =db.Column(db.String(80), nullable=False)
     reason_for_consultation = db.Column(db.String(200), nullable=False)
     current_illness = db.Column(db.String(200), nullable=False)
     criminal_record = db.Column(db.String(200), nullable=False)
