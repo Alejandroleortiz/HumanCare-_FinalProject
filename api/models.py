@@ -21,7 +21,16 @@ class User(db.Model):
             "email": self.email,
             "password": self.password,
             "profile_information": self.profile_information,
+            # "medical_record":self.get_medical_record(),
+            # "patient_appoinments":self.get_patient_appoinments()
         }
+    
+    
+    # def get_medical_record(self):
+    #     return list(map(lambda r: r.serialize(), self.medical_record))
+    
+    # def get_patient_appoinments(self):
+    #     return list(map(lambda a: a.serialize(), self.patient_appoinments))
     
     def save(self):
         db.session.add(self)
@@ -60,7 +69,7 @@ class Role(db.Model):
 class Medical_file(db.Model):
     __tablename__ = 'medical_file'
     id = db.Column(db.Integer, primary_key=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
     file = db.Column(db.String(150), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
 
@@ -69,7 +78,6 @@ class Medical_file(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "file": self.file,
-            "users_to_id": self.users_to_id,
             "date": self.date,
         }
 

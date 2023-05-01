@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 69c5772aba74
+Revision ID: 9f9bde3713eb
 Revises: 
-Create Date: 2023-04-29 13:41:45.608034
+Create Date: 2023-05-01 16:44:09.419981
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '69c5772aba74'
+revision = '9f9bde3713eb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade():
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('password', sa.String(length=120), nullable=False),
     sa.Column('profile_information', sa.String(length=200), nullable=False),
     sa.Column('profile_picture', sa.String(length=150), nullable=False),
     sa.Column('roles_id', sa.Integer(), nullable=False),
@@ -48,11 +48,11 @@ def upgrade():
     )
     op.create_table('medical_file',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('file', sa.String(length=150), nullable=False),
     sa.Column('date', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id', 'user_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('medical_record',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -61,7 +61,7 @@ def upgrade():
     sa.Column('age', sa.Integer(), nullable=False),
     sa.Column('identity_card', sa.Integer(), nullable=False),
     sa.Column('adress', sa.String(length=200), nullable=False),
-    sa.Column('phone_number', sa.Integer(), nullable=False),
+    sa.Column('phone_number', sa.String(length=80), nullable=False),
     sa.Column('reason_for_consultation', sa.String(length=200), nullable=False),
     sa.Column('current_illness', sa.String(length=200), nullable=False),
     sa.Column('criminal_record', sa.String(length=200), nullable=False),
