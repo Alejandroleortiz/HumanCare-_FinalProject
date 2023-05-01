@@ -8,6 +8,7 @@ import Patients from './pages/Patients'
 import AddPatient from './pages/AddPatient'
 import Profile from './pages/Profile'
 import Support from './pages/Support'
+import Account from './pages/Account'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login/>} />
-        
+        <Route path='/account' element={<Account/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/medical-records' element={<MedicalRecords/>} />
         <Route path='/patients' element={<Patients/>}/>

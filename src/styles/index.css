@@ -1,0 +1,21 @@
+.bg-Account {
+  background-color: rgb(161, 167, 167);
+}
+
+.bg-container{
+  background-color: #AFF4C6;
+  
+}
+
+.text-color-HumanCare {
+  color: #AFF4C6;
+}
+
+.imagen-humancare {
+  background-image: url(../img/Fondo-HumanCare.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  z-index: -1;
+}

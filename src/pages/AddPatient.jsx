@@ -113,7 +113,7 @@ function AddPatient() {
                                                         placeholder="Your email"
                                                         aria-label="Default select example"
                                                     >
-                                                        <option selected="">Country</option>
+                                                        <option defaultValue="">Country</option>
                                                         <option value={1}>One</option>
                                                         <option value={2}>Two</option>
                                                         <option value={3}>Three</option>
