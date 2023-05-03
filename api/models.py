@@ -4,9 +4,15 @@ db=SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(120), nullable=False)
+    last_name = db.Column(db.String(120), nullable=False)
+    gender = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    phone_number = db.Column(db.String(120), nullable=False)
+    speciality = db.Column(db.String(120), nullable=False)
+    city = db.Column(db.String(120), nullable=False)
+    country = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
-    profile_information = db.Column(db.String(200), nullable=False)
     profile_picture = db.Column(db.String(150), nullable=False)
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), default=1, nullable =False)
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
@@ -18,11 +24,16 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "gender": self.gender,
             "email": self.email,
+            "phone_number": self.phone_number,
+            "speciality": self.speciality,
+            "city": self.city,
+            "country": self.country,
             "password": self.password,
-            "profile_information": self.profile_information,
-            # "medical_record":self.get_medical_record(),
-            # "patient_appoinments":self.get_patient_appoinments()
+            "profile_picture": self.profile_picture,
         }
     
     
