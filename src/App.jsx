@@ -8,24 +8,31 @@ import Patients from './pages/Patients'
 import AddPatient from './pages/AddPatient'
 import Profile from './pages/Profile'
 import Support from './pages/Support'
-import Account from './pages/Account'
+import AccountMedical from './pages/AccountMedical'
+import AccountPatient from './pages/AccountPatient'
+import AppContext from './store/AppContext'
 
-function App() {
+const App = () => {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/account' element={<Account/>} />
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/medical-records' element={<MedicalRecords/>} />
-        <Route path='/patients' element={<Patients/>}/>
-        <Route path='/add-patients' element={<AddPatient/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='/support' element={<Support/>} />
-      </Routes>
-    </BrowserRouter>
+
+    <AppContext>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/account-medical' element={<AccountMedical />} />
+          <Route path='/account-patient' element={<AccountPatient />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/medical-records' element={<MedicalRecords />} />
+          <Route path='/patients' element={<Patients />} />
+          <Route path='/add-patients' element={<AddPatient />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/support' element={<Support />} />
+        </Routes>
+      </BrowserRouter>
+    </AppContext>
+    
   )
 }
 

@@ -1,7 +1,21 @@
 import React from 'react'
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import Users from './Users'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { GlobalContext } from '../../store/AppContext';
+
 
 function LoginForm() {
+
+    const {showModal, setShowModal} = useContext(GlobalContext);
+    const {showIcon, setShowIcon} = useContext(GlobalContext); 
+ 
+    /* Funcion que activa y desactiva el Modal */
+    const handleModal = () => {
+        setShowModal(!setShowModal);
+    }
+
     return (
         <div className="container-fluid p-5 imagen-humancare">
 
@@ -20,36 +34,35 @@ function LoginForm() {
                                     </label>
                                     <input
                                         type="email"
-                                        className="form-control border-success border-3"
+                                        className="form-control border-success"
                                         id="email"
                                         placeholder="Your email address"
                                     />
                                 </div>
-                                <div className="mb-4">
+                                <div className=" mb-4">
                                     <label className="form-label" htmlFor="password">
                                         Password
                                     </label>
-                                    <input
-                                        type="password"
-                                        className="form-control form-control border-success border-3"
-                                        id="password"
-                                        placeholder="Password"
-                                        autoComplete="current-password"
-                                    />
-                                </div>
-                                <div className="mb-4">
-                                    <div className="form-check">
+                                    <div className="d-flex">
                                         <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            name="check_example"
-                                            id="check_example"
+                                            type={showIcon ? 'text' : 'password'}
+                                            className="form-control rounded-start rounded-0 border-end-0 border-success border-3"
+                                            id="password"
+                                            placeholder="Password"
+                
                                         />
-                                        <label className="form-check-label" htmlFor="check_example">
-                                            Show me Password
-                                        </label>
+                                        <Link to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
+                                        onClick={() => {
+                                            setShowIcon(!showIcon);
+                                        }}
+                                        >
+                                            {
+                                                showIcon ? <FaEyeSlash /> : <FaEye />
+                                            }
+                                        </Link>
                                     </div>
                                 </div>
+                                
                                 <div className='d-flex justify-content-center'>
                                     <Link to="/dashboard" className="btn btn-primary">
                                         Sign in
@@ -64,7 +77,11 @@ function LoginForm() {
                             </div>
                             <div className="my-6 fw-bold">
                                 <small>Don't have an account? </small>
-                                <Link to="/Account" className="text-primary fw-bold">
+                                <Link to=''
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                    onClick={handleModal}
+                                    className="text-primary fw-bold">
                                     Sign up
                                 </Link>
                             </div>
@@ -74,6 +91,7 @@ function LoginForm() {
 
             </div>
 
+            {showModal && <Users />}
         </div>
 
     )

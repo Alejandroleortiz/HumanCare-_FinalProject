@@ -7,6 +7,11 @@
   
 }
 
+.bg-container-medical{
+  background-color: #AFF4C6;
+  height: 100vh;
+}
+
 .text-color-HumanCare {
   color: #AFF4C6;
 }

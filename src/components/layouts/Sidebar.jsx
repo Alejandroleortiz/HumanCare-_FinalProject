@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink} from 'react-router-dom'
+import HumanCare from '../../img/Logo.png';
 
 function Sidebar() {
     return (
         <>
             <nav
-                className="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-light border-bottom border-bottom-lg-0 border-end-lg"
+                className="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light
+                 bg-light border-bottom border-bottom-lg-0 border-end-lg"
                 id="navbarVertical"
             >
                 <div className="container-fluid">
@@ -22,11 +24,13 @@ function Sidebar() {
                         <span className="navbar-toggler-icon" />
                     </button>
                     {/* Brand */}
-                    <NavLink className="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" to="/dashboard">
+                    <NavLink className="navbar-brand mx-4" to="/dashboard">
                         <img
-                            src="https://preview.webpixels.io/web/img/logos/clever-primary.svg"
-                            alt="..."
+                            className='px-4 mx-3'
+                            src={HumanCare}
+                            alt="HumanCare Logo"
                         />
+                        <h4 className='mt-2'>HUMANCARE</h4>
                     </NavLink>
                     {/* User menu (mobile) */}
                     <div className="navbar-user d-lg-none">

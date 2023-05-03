@@ -1,226 +1,215 @@
 import React from 'react'
 import Layout from '../components/layouts/Layout'
+import { useContext } from 'react';
+import { Link } from 'react-router-dom'
+import '../styles/index.css';
+import { GlobalContext } from "../store/AppContext";
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
 function AddPatient() {
+
+    const {icons1, setIcons1} = useContext(GlobalContext);
+    const {icons2, setIcons2} = useContext(GlobalContext);
+
     return (
-        <Layout includeSidebar includeHeader>
-            <div className="container-fluid">
-                <>
+        <Layout includeSidebar>
+            <div className="container-fluid bg-container-medical opacity-75">
+                
+                    <h1 className="text-secondary text-center mb-3 pt-4">
+                        HUMANCARE
+                    </h1>
                     {/* Main */}
-                    <main className="py-6 bg-surface-secondary">
-                        <div className="container-fluid">
-                            <div className="row">
-                                <div className="col-xl-7 mx-auto">
-                                    {/* Profile picture */}
-                                    <div className="card shadow border-0 mt-4 mb-10">
-                                        <div className="card-body">
-                                            <div className="d-flex align-items-center">
-                                                <div>
-                                                    <div className="d-flex align-items-center">
-                                                        <a
-                                                            href="#"
-                                                            className="avatar avatar-lg bg-warning rounded-circle text-white"
-                                                        >
-                                                            <img
-                                                                alt="..."
-                                                                src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                                                            />
-                                                        </a>
-                                                        <div className="ms-4">
-                                                            <span className="h4 d-block mb-0">Julianne Moore</span>
-                                                            <a href="#" className="text-sm font-semibold text-muted">
-                                                                View Profile
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="ms-auto">
-                                                    <button type="button" className="btn btn-sm btn-neutral">
-                                                        Upload
-                                                    </button>
-                                                </div>
+                    {/* <div className="container w-50 rounded-4 bg-container opacity-75" > */}
+                        <div className="row">
+                            <div className="col-md-10 mx-auto">
+
+                                {/* Form */}
+                                <div className="mb-4 mt-4">
+                                    <h3 className="mb-0 text-secondary">HumanCare Patient Account</h3>
+                                </div>
+
+                                <form className="mb-5">
+
+                                    {/*------------------------------------------------------------ FILA 1 -------------------------------------------------------------------------- */}
+
+                                    <div className="row mb-3">
+                                        <div className="col-md-6">
+                                            <div className="">
+                                                <label className="form-label" htmlFor="first_name">
+                                                    First name
+                                                </label>
+                                                <input type="text" className="form-control border-success border-3"
+                                                    id="first_name" placeholder="Write your first name" />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="">
+                                                <label className="form-label" htmlFor="last_name">
+                                                    Last name
+                                                </label>
+                                                <input type="text" className="form-control border-success border-3"
+                                                    id="last_name" placeholder="Write your last name" />
                                             </div>
                                         </div>
                                     </div>
-                                    {/* Form */}
-                                    <div className="mb-5">
-                                        <h5 className="mb-0">Contact Information</h5>
+
+                                    {/*------------------------------------------------------------ FILA 2 -------------------------------------------------------------------------- */}
+
+                                    <div className="row mb-3">
+                                        <div className="col-md-6 ">
+                                            <label className="form-label" htmlFor="Speciality" >
+                                                Gender
+                                            </label>
+                                            {/* <input type="text" className="form-control" id="Speciality" /> */}
+                                            <select
+                                                className="form-select border-success border-3"
+                                                id="Gender"
+                                                placeholder="Choose your area of interest"
+                                                aria-label="Default select example"
+                                            >
+                                                <option defaultValue="" >Gender</option>
+                                                <option value={1}>Male</option>
+                                                <option value={2}>Female</option>
+
+                                            </select>
+                                        </div>
+                                        <div className="col-md-6">
+
+                                            <label className="form-label" htmlFor="email">
+                                                Email
+                                            </label>
+                                            <input type="email" className="form-control border-success border-3"
+                                                id="email"
+                                                placeholder="User@humancare.com"
+                                            />
+
+                                        </div>
                                     </div>
-                                    <form className="mb-6">
-                                        <div className="row mb-5">
-                                            <div className="col-md-6">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="first_name">
-                                                        First name
-                                                    </label>
-                                                    <input type="text" className="form-control" id="first_name" />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="last_name">
-                                                        Last name
-                                                    </label>
-                                                    <input type="text" className="form-control" id="last_name" />
-                                                </div>
+
+                                    {/*------------------------------------------------------------ FILA 3 -------------------------------------------------------------------------- */}
+
+                                    <div className="row mb-3">
+                                        <div className="col-md-6">
+                                            <label className="form-label" htmlFor="phone_number">
+                                                Phone number
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                className="form-control border-success border-3"
+                                                placeholder="(xx) xxx - xxxxxxx"
+                                                id="phone_number"
+                                            />
+                                        </div>
+                                    </div>
+
+
+                                    {/*------------------------------------------------------------ FILA 4  -------------------------------------------------------------------------- */}
+
+                                    <div className="row">
+                                        <div className="col-md-6">
+
+                                            <label className="form-label" htmlFor="city">
+                                                City
+                                            </label>
+                                            <input type="text"
+                                                className="form-control border-success border-3"
+                                                placeholder="Write your City"
+                                                id="city" />
+
+                                        </div>
+                                        <div className="col-md-6">
+
+                                            <label className="form-label " htmlFor="country">
+                                                Country
+                                            </label>
+                                            <select
+                                                className="form-select border-success border-3"
+                                                id="country"
+                                                aria-label="Default select example"
+                                            >
+                                                <option defaultValue="">Country</option>
+                                                <option value={1}>Chile</option>
+                                                <option value={2}>United State</option>
+                                                <option value={3}>Venezuela</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {/*------------------------------------------------------------ FILA 5 -------------------------------------------------------------------------- */}
+
+                                    <div className="row mb-2 mt-2">
+                                        <div className="col-md-6">
+                                            <label className="form-label" htmlFor="password">
+                                                Password
+                                            </label>
+                                            <div className="d-flex">
+                                                <input
+                                                    type={icons1 ? 'text' : 'password'}
+                                                    className="form-control rounded-start rounded-0 border-end-0 border-success border-3"
+                                                    id="password1"
+                                                    placeholder="Password"
+
+                                                />
+                                                <Link to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
+                                                    onClick={() => {
+                                                        setIcons1(!icons1);
+                                                    }}
+                                                >
+                                                    {
+                                                        icons1 ? <FaEyeSlash /> : <FaEye />
+                                                    }
+                                                </Link>
                                             </div>
                                         </div>
-                                        <div className="row g-5">
-                                            <div className="col-md-6">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="email">
-                                                        Email
-                                                    </label>
-                                                    <input type="email" className="form-control" id="email" />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="phone_number">
-                                                        Phone number
-                                                    </label>
-                                                    <input
-                                                        type="tel"
-                                                        className="form-control"
-                                                        id="phone_number"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-12">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="address">
-                                                        Address
-                                                    </label>
-                                                    <input type="text" className="form-control" id="address" />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="city">
-                                                        City
-                                                    </label>
-                                                    <input type="text" className="form-control" id="city" />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="country">
-                                                        Country
-                                                    </label>
-                                                    <select
-                                                        className="form-select"
-                                                        id="country"
-                                                        placeholder="Your email"
-                                                        aria-label="Default select example"
-                                                    >
-                                                        <option defaultValue="">Country</option>
-                                                        <option value={1}>One</option>
-                                                        <option value={2}>Two</option>
-                                                        <option value={3}>Three</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-2">
-                                                <div className="">
-                                                    <label className="form-label" htmlFor="zip">
-                                                        ZIP
-                                                    </label>
-                                                    <input type="tel" className="form-control" id="zip" />
-                                                </div>
-                                            </div>
-                                            <div className="col-12">
-                                                <div className="form-check">
-                                                    <input
-                                                        className="form-check-input"
-                                                        type="checkbox"
-                                                        name="check_primary_address"
-                                                        id="check_primary_address"
-                                                    />
-                                                    <label
-                                                        className="form-check-label"
-                                                        htmlFor="check_primary_address"
-                                                    >
-                                                        Make this my default address
-                                                    </label>
-                                                </div>
+
+                                        <div className="col-md-6">
+                                            <label className="form-label" htmlFor="password">
+                                                Repeat Password
+                                            </label>
+                                            <div className="d-flex">
+                                                <input
+                                                    type={icons2 ? 'text' : 'password'}
+                                                    className="form-control rounded-start rounded-0 border-end-0 border-success border-3"
+                                                    id="password2"
+                                                    placeholder="Password"
+                                                />
+                                                <Link to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
+                                                    onClick={() => {
+                                                        setIcons2(!icons2);
+                                                    }}
+                                                >
+                                                    {
+                                                        icons2 ? <FaEyeSlash /> : <FaEye />
+                                                    }
+                                                </Link>
                                             </div>
                                         </div>
-                                        <div className="text-end">
-                                            <button type="button" className="btn btn-sm btn-neutral me-2">
+                                    </div>
+
+
+                                    {/*------------------------------------------------------------ FILA 6 -------------------------------------------------------------------------- */}
+
+                                    <div className="text-end mt-5">
+                                        <Link to="/">
+                                            <button type="button" className="btn btn-sm btn-danger me-2" >
                                                 Cancel
                                             </button>
-                                            <button type="submit" className="btn btn-sm btn-primary">
+                                        </Link>
+
+                                        <Link to="/dashboard">
+                                            <button type="submit" className="btn btn-sm btn-success">
                                                 Save
                                             </button>
-                                        </div>
-                                    </form>
-                                    <hr className="my-10" />
-                                    {/* Individual switch cards */}
-                                    <div className="row g-6">
-                                        <div className="col-md-6">
-                                            <div className="card shadow border-0">
-                                                <div className="card-body">
-                                                    <h5 className="mb-2">Public profile</h5>
-                                                    <p className="text-sm text-muted mb-6">
-                                                        Making your profile public means that anyone on the network
-                                                        will be able to find you.
-                                                    </p>
-                                                    <div className="form-check form-switch">
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            id="flexSwitchCheckDefault"
-                                                            defaultChecked=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="card shadow border-0">
-                                                <div className="card-body">
-                                                    <h5 className="mb-2">Show my email</h5>
-                                                    <p className="text-sm text-muted mb-6">
-                                                        Showing your e-mail adresses means that anyone on the
-                                                        network will be able to find you.
-                                                    </p>
-                                                    <div className="form-check form-switch">
-                                                        <input
-                                                            className="form-check-input"
-                                                            type="checkbox"
-                                                            id="flexSwitchCheckDefault"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="card shadow border-0">
-                                                <div className="card-body d-flex align-items-center">
-                                                    <div>
-                                                        <h5 className="text-danger mb-2">Deactivate account</h5>
-                                                        <p className="text-sm text-muted">
-                                                            Once you delete your account, there is no going back.
-                                                            Please be certain.
-                                                        </p>
-                                                    </div>
-                                                    <div className="ms-auto">
-                                                        <button type="button" className="btn btn-sm btn-danger">
-                                                            Deactivate
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </Link>
                                     </div>
-                                </div>
+                                </form>
+
                             </div>
                         </div>
-                    </main>
-                </>
+                    {/* </div> */}
 
             </div>
-        </Layout>
+        </Layout >
     )
 }
 
