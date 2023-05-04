@@ -1,7 +1,52 @@
 import React from 'react'
 import Layout from '../components/layouts/Layout'
+import { useEffect, useState} from 'react';
 
 function Dashboard() {
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const [data, setData] = useState([]);
+
+    // Comunicacion HTTP: GET, POST, PUT, DELETE
+
+    //Variable Url -> Creacion del Recurso
+    const [url] = useState('http://localhost:3001');
+
+    // Fetch -> GET -----------------------------------------------------------
+
+        const getData = () => {
+
+            const options = {
+                method: 'GET',
+            //  body:
+                headers: {
+                    'Content-Type' : 'application/json'
+                }
+
+            }
+
+            fetch(`${url}/notes`, options)
+            .then((response) => {
+                console.log(response)
+
+                return response.json(); // Respuesta del Servidor
+            })
+            .then((data) => {
+                console.log(data);
+                setData(data);
+            })
+            .catch ((error) => {
+                console.log(error.message);
+            })
+        }
+
+    //-------------------------------------------------------------------------
+
+
+
     return (
         <>
             <Layout includeSidebar includeHeader>
