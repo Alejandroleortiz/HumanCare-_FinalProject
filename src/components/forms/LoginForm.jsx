@@ -1,20 +1,24 @@
 import React from 'react'
 import { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Users from './Users'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { GlobalContext } from '../../store/AppContext';
 
 
+
 function LoginForm() {
 
-    const {showModal, setShowModal} = useContext(GlobalContext);
-    const {showIcon, setShowIcon} = useContext(GlobalContext); 
- 
+    const { showModal, setShowModal } = useContext(GlobalContext);
+    const { showIcon, setShowIcon } = useContext(GlobalContext);
+
     /* Funcion que activa y desactiva el Modal */
     const handleModal = () => {
         setShowModal(!setShowModal);
     }
+
+    const { actions } = useContext(GlobalContext);
+    const navigate = useNavigate();
 
     return (
         <div className="container-fluid p-5 imagen-humancare">
@@ -27,7 +31,7 @@ function LoginForm() {
                 <div className="container pt-4 pb-4 opacity-75 mt-4 rounded-4 w-50 bg-container">
                     <div className="row">
                         <div className='col-md-7 mx-auto '>
-                            <form >
+                            <form onSubmit={(e) => actions.login(e, navigate)}>
                                 <div className="mb-4">
                                     <label className="form-label" htmlFor="email">
                                         Email address
@@ -43,30 +47,33 @@ function LoginForm() {
                                     <label className="form-label" htmlFor="password">
                                         Password
                                     </label>
+
+
+                                    
                                     <div className="d-flex">
                                         <input
                                             type={showIcon ? 'text' : 'password'}
                                             className="form-control rounded-start rounded-0 border-end-0 border-success border-3"
                                             id="password"
                                             placeholder="Password"
-                
+
                                         />
-                                        <Link to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
-                                        onClick={() => {
-                                            setShowIcon(!showIcon);
-                                        }}
+                                        <NavLink to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
+                                            onClick={() => {
+                                                setShowIcon(!showIcon);
+                                            }}
                                         >
                                             {
                                                 showIcon ? <FaEyeSlash /> : <FaEye />
                                             }
-                                        </Link>
+                                        </NavLink>
                                     </div>
                                 </div>
-                                
+
                                 <div className='d-flex justify-content-center'>
-                                    <Link to="/dashboard" className="btn btn-primary">
+                                    <button className="btn btn-primary">
                                         Sign in
-                                    </Link>
+                                    </button>
                                 </div>
                             </form>
 
