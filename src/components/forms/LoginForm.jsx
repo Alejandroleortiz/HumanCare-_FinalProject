@@ -24,7 +24,7 @@ function LoginForm() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (store.currentUser !== null) navigate(-1)
+        if (store.currentUser !== null) navigate('/dashboard')
     }, [])
 
     return (

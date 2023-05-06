@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            checkCurrentUser: () => {
+            checkCurrentUser: () => { //mantener la información del currentUser
                 if(sessionStorage.getItem('currentUser')){
                     setStore({
                         currentUser: JSON.parse(sessionStorage.getItem('currentUser'))

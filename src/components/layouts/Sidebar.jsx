@@ -5,8 +5,8 @@ import { GlobalContext } from '../../store/AppContext';
 
 function Sidebar() {
 
-    const {state:{store,actions}} = useContext(GlobalContext)
-    
+    const {state:{store, actions}} = useContext(GlobalContext)
+
     return (
         <>
             <nav
@@ -113,13 +113,25 @@ function Sidebar() {
                         {/* Divider */}
                         <hr className="navbar-divider my-5 opacity-20" />
                         {/* Navigation */}
+
+                        {/* {
+                            !!store.currenUser ? //Limitar la visualizacion segun el rol
+                            (
+                                <>
+                                
+                                </>
+                            ):(
+                                <>
+                                </>
+                            )
+                        } */}
                         <ul className="navbar-nav mb-md-4">
                             <li>
                                 <div
                                     className="nav-link text-xs font-semibold text-uppercase text-muted ls-wide"
                                     to="#"
                                 >
-                                    Contacts
+                                    Active Users
                                     <span className="badge bg-opacity-30 bg-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">
                                         13
                                     </span>
@@ -139,10 +151,10 @@ function Sidebar() {
                                     </div>
                                     <div>
                                         <span className="d-block text-sm font-semibold">
-                                            Marie Claire
+                                            {store?.currentUser?.user?.first_name} {store?.currentUser?.user?.last_name}
                                         </span>
                                         <span className="d-block text-xs text-muted font-regular">
-                                            Paris, FR
+                                        {store?.currentUser?.user?.country}
                                         </span>
                                     </div>
                                     <div className="ms-auto">
@@ -150,54 +162,8 @@ function Sidebar() {
                                     </div>
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink to="#" className="nav-link d-flex align-items-center">
-                                    <div className="me-4">
-                                        <div className="position-relative d-inline-block text-white">
-                                            <span className="avatar bg-opacity-30 bg-warning text-warning rounded-circle">
-                                                JW
-                                            </span>
-                                            <span className="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span className="d-block text-sm font-semibold">
-                                            Michael Jordan
-                                        </span>
-                                        <span className="d-block text-xs text-muted font-regular">
-                                            Bucharest, RO
-                                        </span>
-                                    </div>
-                                    <div className="ms-auto">
-                                        <i className="bi bi-chat" />
-                                    </div>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="#" className="nav-link d-flex align-items-center">
-                                    <div className="me-4">
-                                        <div className="position-relative d-inline-block text-white">
-                                            <img
-                                                alt="..."
-                                                src="https://images.unsplash.com/photo-1610899922902-c471ae684eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                                                className="avatar rounded-circle"
-                                            />
-                                            <span className="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span className="d-block text-sm font-semibold">
-                                            Heather Wright
-                                        </span>
-                                        <span className="d-block text-xs text-muted font-regular">
-                                            London, UK
-                                        </span>
-                                    </div>
-                                    <div className="ms-auto">
-                                        <i className="bi bi-chat" />
-                                    </div>
-                                </NavLink>
-                            </li>
+                            
+                            
                         </ul>
                         {/* Push content down */}
                         <div className="mt-auto" />
