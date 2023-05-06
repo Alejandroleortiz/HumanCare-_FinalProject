@@ -4,34 +4,50 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Users from './Users'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { GlobalContext } from '../../store/AppContext';
+import Alert from '../alerts/Alert';
+import { useEffect } from 'react';
+
 
 
 
 function LoginForm() {
 
-    const { showModal, setShowModal } = useContext(GlobalContext);
-    const { showIcon, setShowIcon } = useContext(GlobalContext);
+    const { state: { store, actions }, showModal, setShowModal, showIcon, setShowIcon } = useContext(GlobalContext);
+
+
 
     /* Funcion que activa y desactiva el Modal */
     const handleModal = () => {
         setShowModal(!setShowModal);
     }
 
-    const { actions } = useContext(GlobalContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (store.currentUser !== null) navigate(-1)
+    }, [])
 
     return (
         <div className="container-fluid p-5 imagen-humancare">
+            {
+                !!store.error && (
+                    <Alert color={"danger"} text={error.msg} className={""} />
+                )
+            }
 
             <div className="row">
                 <div className="text-center mb-12">
                     <h1 className="ls-tight text-secondary font-bolder h2">Welcome to HumanCare</h1>
                     <p className="mt-2">Let's build someting great</p>
                 </div>
+
                 <div className="container pt-4 pb-4 opacity-75 mt-4 rounded-4 w-50 bg-container">
                     <div className="row">
                         <div className='col-md-7 mx-auto '>
-                            <form onSubmit={(e) => actions.login(e, navigate)}>
+                            <form onSubmit={(e) => {
+                                e.preventDefault();
+                                actions.login(e, navigate)
+                            }}>
                                 <div className="mb-4">
                                     <label className="form-label" htmlFor="email">
                                         Email address
@@ -49,7 +65,7 @@ function LoginForm() {
                                     </label>
 
 
-                                    
+
                                     <div className="d-flex">
                                         <input
                                             type={showIcon ? 'text' : 'password'}

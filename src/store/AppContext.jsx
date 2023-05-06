@@ -12,14 +12,15 @@ const injectContext = (PassComponent) => {
       getActions: () => state.actions, // Encargado de devolver todo lo que esta en el state (actions)
       setStore: (updateStore) => setState({
         store: Object.assign(state.store, updateStore), // Sumar dos objetos y generar uno nuevo
-        actions:{...state.actions}
+        actions: { ...state.actions }
       }), // setear el state
     }));
 
     useEffect(() => {
       // Aqui coloco las funciones que quiero que se ejecuten una vez cargadas las imagenes
-   }, [])
-    
+      state.actions.checkCurrentUser()
+    }, [])
+
 
     const [showModal, setShowModal] = useState(true);
     const [showIcon, setShowIcon] = useState(false);
@@ -34,7 +35,7 @@ const injectContext = (PassComponent) => {
         setIcons1, setIcons2,
         state
       }}>
-        <PassComponent {...props}/>
+        <PassComponent {...props} />
         {props.children}
       </GlobalContext.Provider>
     );

@@ -19,10 +19,10 @@ import { useContext } from 'react'
 
 const App = () => {
   // const { store: { currentUser } } = useContext(GlobalContext);
-  const { store } = useContext(GlobalContext);
+  
+  const { state:{store, actions} } = useContext(GlobalContext);
   const currentUser = store?.currentUser;
 
-  
 
   return (
 

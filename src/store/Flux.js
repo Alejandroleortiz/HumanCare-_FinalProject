@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             API_URL: 'http://127.0.0.1:9000',
             currentUser: null,
-            error: null
+            error: null,
+
         },
         actions: {
             login: async (e, navigate) => {
@@ -29,21 +30,38 @@ const getState = ({ getStore, getActions, setStore }) => {
                             currentUser: null,
                             error: data
                         })
-                        navigate('/')
+
                     } else {
                         setStore({
                             currentUser: data,
                             error: null
                         })
+                        sessionStorage.setItem('currentUser', JSON.stringify(data))
                         navigate('/dashboard')
-                        console.log(data);
                     }
 
                 } catch (error) {
                     console.log(error.message);
 
                 }
-            }
+            },
+
+            logout: () => {
+                if(sessionStorage.getItem('currentUser')){
+                    setStore({
+                        currentUser: null
+                    })
+                    sessionStorage.removeItem('currentUser')
+                }
+            },
+
+            checkCurrentUser: () => {
+                if(sessionStorage.getItem('currentUser')){
+                    setStore({
+                        currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
+                    })
+                }
+            },
 
 
         }

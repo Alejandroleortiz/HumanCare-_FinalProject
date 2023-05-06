@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink} from 'react-router-dom'
 import HumanCare from '../../img/Logo.png';
+import { GlobalContext } from '../../store/AppContext';
 
 function Sidebar() {
+
+    const {state:{store,actions}} = useContext(GlobalContext)
+    
     return (
         <>
             <nav
@@ -205,9 +209,9 @@ function Sidebar() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/">
+                                <button className="nav-link" onClick={actions.logout}>
                                     <i className="bi bi-box-arrow-left" /> Logout
-                                </NavLink>
+                                </button>
                             </li>
                         </ul>
                     </div>
