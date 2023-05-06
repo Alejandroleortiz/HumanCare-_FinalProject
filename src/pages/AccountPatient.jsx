@@ -76,7 +76,7 @@ const AccountPatient = () => {
                   {/* <input type="text" className="form-control" id="Speciality" /> */}
                   <select
                     className="form-select border-success border-3"
-                    id="Gender"
+                    id="gender"
                     placeholder="Choose your area of interest"
                     aria-label="Default select example"
                   >
@@ -183,7 +183,7 @@ const AccountPatient = () => {
                     <input
                       type={icons2 ? 'text' : 'password'}
                       className="form-control rounded-start rounded-0 border-end-0 border-success border-3"
-                      id="password2"
+                      id="password"
                       placeholder="Password"
                     />
                     <Link to='' className=' bg-light text-success border rounded-end rounded-0 pt-2 px-3 border-success border-start-0 rounded-end'
@@ -203,17 +203,16 @@ const AccountPatient = () => {
               {/*------------------------------------------------------------ FILA 6 -------------------------------------------------------------------------- */}
 
               <div className="text-end mt-5">
-                <Link to="/">
-                  <button type="button" className="btn btn-sm btn-danger me-2" >
-                    Cancel
-                  </button>
-                </Link>
 
-                <Link to="/dashboard">
-                  <button type="submit" className="btn btn-sm btn-success">
-                    Save
-                  </button>
-                </Link>
+                <button type="button" className="btn btn-sm btn-danger me-2" >
+                  Cancel
+                </button>
+
+
+                <button type="submit" className="btn btn-sm btn-success">
+                  Save
+                </button>
+
               </div>
             </form>
 

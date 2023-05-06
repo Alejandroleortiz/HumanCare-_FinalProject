@@ -37,8 +37,8 @@ def signup():
     if not phone_number:
         return jsonify({ "msg": "Phone number information is required"}), 422
     
-    if not speciality:
-        return jsonify({ "msg": "Speciality information is required"}), 422
+    # if not speciality:
+    #     return jsonify({ "msg": "Speciality information is required"}), 422
     
     if not city:
         return jsonify({ "msg": "city information is required"}), 422

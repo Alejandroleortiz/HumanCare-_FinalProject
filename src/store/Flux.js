@@ -18,9 +18,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const { API_URL } = getStore()
                     const { first_name, last_name, gender, email, phone_number, speciality, city,
                         country, password, profile_picture, role } = e.target;
-                        console.log({ first_name, last_name, gender, email, phone_number, speciality, city,
-                            country, password, profile_picture, role });
-                            console.log(e);
                     const credentials = {
                         first_name: first_name?.value,
                         last_name: last_name?.value,
