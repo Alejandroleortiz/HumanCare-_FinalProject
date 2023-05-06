@@ -13,7 +13,7 @@ class User(db.Model):
     city = db.Column(db.String(120), nullable=False)
     country = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
-    profile_picture = db.Column(db.String(150), nullable=False)
+    profile_picture = db.Column(db.String(150), default = 'no picture', nullable=True)
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), default=1, nullable =False)
     medical_record = db.relationship('Medical_record',  backref="user", uselist = False)
     medical_appoinments = db.relationship('Medical_appoinment', foreign_keys='[Medical_appoinment.doctor_id]', backref='doctor')

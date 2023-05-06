@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import HumanCare from '../../img/Logo.png';
 import { GlobalContext } from '../../store/AppContext';
 
 function Sidebar() {
 
-    const {state:{store, actions}} = useContext(GlobalContext)
+    const { state: { store, actions } } = useContext(GlobalContext)
 
     return (
         <>
@@ -154,7 +154,7 @@ function Sidebar() {
                                             {store?.currentUser?.user?.first_name} {store?.currentUser?.user?.last_name}
                                         </span>
                                         <span className="d-block text-xs text-muted font-regular">
-                                        {store?.currentUser?.user?.country}
+                                            {store?.currentUser?.user?.country}
                                         </span>
                                     </div>
                                     <div className="ms-auto">
@@ -162,8 +162,8 @@ function Sidebar() {
                                     </div>
                                 </NavLink>
                             </li>
-                            
-                            
+
+
                         </ul>
                         {/* Push content down */}
                         <div className="mt-auto" />

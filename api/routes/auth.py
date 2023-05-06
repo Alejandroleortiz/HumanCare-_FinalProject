@@ -49,8 +49,8 @@ def signup():
     if not password:
         return jsonify({ "msg": "Password is required"}), 422
     
-    if not profile_picture:
-        return jsonify({ "msg": "Profile picture is required"}), 422
+    # if not profile_picture:
+    #     return jsonify({ "msg": "Profile picture is required"}), 422
     
     
 

@@ -7,6 +7,69 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         },
         actions: {
+
+            generico: null,
+
+            register: async (e, navigate, userRole) => { 
+                //signup
+                e.preventDefault()
+                
+                try {
+                    const { API_URL } = getStore()
+                    const { first_name, last_name, gender, email, phone_number, speciality, city,
+                        country, password, profile_picture, role } = e.target;
+                        console.log({ first_name, last_name, gender, email, phone_number, speciality, city,
+                            country, password, profile_picture, role });
+                            console.log(e);
+                    const credentials = {
+                        first_name: first_name?.value,
+                        last_name: last_name?.value,
+                        gender: gender?.value,
+                        email: email?.value,
+                        phone_number: phone_number?.value,
+                        speciality: speciality?.value,
+                        city: city?.value,
+                        country: country?.value,
+                        password: password?.value,
+                        profile_picture: profile_picture?.value,
+                        role: userRole // declaro el parametro
+                    }
+
+
+
+                    const options = {
+                        method: 'POST',
+                        body: JSON.stringify(credentials),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+
+                    const response = await fetch(`${API_URL}/api/signup`, options)
+                    const data = await response.json()
+
+                    if (data.msg) {
+                        setStore({
+                            currentUser: null,
+                            error: data
+                        })
+
+                    } else {
+                        setStore({
+                            currentUser: data,
+                            error: null
+                        })
+                        sessionStorage.setItem('currentUser', JSON.stringify(data))
+                        navigate('/dashboard')
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+
+                }
+            },
+
+
             login: async (e, navigate) => {
                 e.preventDefault()
                 try {
@@ -47,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             logout: () => {
-                if(sessionStorage.getItem('currentUser')){
+                if (sessionStorage.getItem('currentUser')) {
                     setStore({
                         currentUser: null
                     })
@@ -56,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             checkCurrentUser: () => { //mantener la información del currentUser
-                if(sessionStorage.getItem('currentUser')){
+                if (sessionStorage.getItem('currentUser')) {
                     setStore({
                         currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
                     })
