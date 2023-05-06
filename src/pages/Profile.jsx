@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Layout from '../components/layouts/Layout'
+import { GlobalContext } from '../store/AppContext'
+
 
 function Profile() {
+
+    const { state: { store, actions } } = useContext(GlobalContext)
+
     return (
+
         <Layout includeSidebar>
             <div className="container-fluid">
 
@@ -25,8 +31,8 @@ function Profile() {
                                                 className="img-fluid my-5"
                                                 style={{ width: 80 }}
                                             />
-                                            <h5>Marie Horwitz</h5>
-                                            <p>Web Designer</p>
+                                            <h5>{store?.currentUser?.user?.first_name} {store?.currentUser?.user?.last_name}</h5>
+                                            <p>{store?.currentUser?.user?.speciality}</p>
                                             <i className="far fa-edit mb-5" />
                                         </div>
                                         <div className="col-md-8">
@@ -36,23 +42,23 @@ function Profile() {
                                                 <div className="row pt-1">
                                                     <div className="col-6 mb-3">
                                                         <h6>Email</h6>
-                                                        <p className="text-muted">info@example.com</p>
+                                                        <p className="text-muted">{store?.currentUser?.user?.email}</p>
                                                     </div>
                                                     <div className="col-6 mb-3">
                                                         <h6>Phone</h6>
-                                                        <p className="text-muted">123 456 789</p>
+                                                        <p className="text-muted">{store?.currentUser?.user?.phone_number}</p>
                                                     </div>
                                                 </div>
-                                                <h6>Projects</h6>
+                                                <h6>Location</h6>
                                                 <hr className="mt-0 mb-4" />
                                                 <div className="row pt-1">
                                                     <div className="col-6 mb-3">
-                                                        <h6>Recent</h6>
-                                                        <p className="text-muted">Lorem ipsum</p>
+                                                        <h6>City</h6>
+                                                        <p className="text-muted">{store?.currentUser?.user?.city}</p>
                                                     </div>
                                                     <div className="col-6 mb-3">
-                                                        <h6>Most Viewed</h6>
-                                                        <p className="text-muted">Dolor sit amet</p>
+                                                        <h6>Country</h6>
+                                                        <p className="text-muted">{store?.currentUser?.user?.country}</p>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex justify-content-start">

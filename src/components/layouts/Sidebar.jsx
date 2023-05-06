@@ -154,7 +154,7 @@ function Sidebar() {
                                             {store?.currentUser?.user?.first_name} {store?.currentUser?.user?.last_name}
                                         </span>
                                         <span className="d-block text-xs text-muted font-regular">
-                                            {store?.currentUser?.user?.country}
+                                            {store?.currentUser?.user?.speciality}
                                         </span>
                                     </div>
                                     <div className="ms-auto">
