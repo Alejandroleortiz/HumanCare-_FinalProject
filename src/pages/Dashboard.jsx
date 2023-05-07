@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import Layout from '../components/layouts/Layout'
 import { useEffect, useState } from 'react';
-import Masculine from '../img/Usuario.png'
-import Female from '../img/Femenino.png'
 import { GlobalContext } from '../store/AppContext';
-import Folders from '../img/folders.svg'
+import PatientM from '../components/patients and records/PatientM';
+import PatientF from '../components/patients and records/PatientF';
+import MedicalRecord from '../components/patients and records/MedicalRecord';
 
 
 function Dashboard() {
@@ -196,83 +196,11 @@ function Dashboard() {
                                                     </thead>
                                                     <tbody>
 
-                                                        {/* Patient */}
-                                                        <tr>
-                                                            <td>
-                                                                <img
-                                                                    alt="avatar"
-                                                                    src={Masculine}
-                                                                    className="avatar avatar-sm rounded-circle me-2"
-                                                                />
-                                                                <a className="text-heading font-semibold" href="#">
-                                                                    Robert Fox
-                                                                </a>
-                                                            </td>
-                                                            <td>28</td>
-                                                            <td>
-                                                                <a className="text-heading font-semibold" href="#">
-                                                                    Chemotherapy
-                                                                </a>
-                                                            </td>
-                                                            <td>Lorem ipsum dolor sit </td>
-                                                            <td>
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                                >
-                                                                    <i className="bi bi-eye-fill" />
-                                                                </button></td>
+                                                        {/* Patient M */}
+                                                        <PatientM />
 
-                                                            <td>
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                                >
-                                                                    <i className="bi bi-trash" />
-                                                                </button>
-                                                            </td>
-
-                                                        </tr>
-
-                                                        {/* Patient */}
-                                                        <tr>
-                                                            <td>
-                                                                <img
-                                                                    alt="avatar"
-                                                                    src={Female}
-                                                                    className="avatar avatar-sm rounded-circle me-2"
-                                                                />
-                                                                <a className="text-heading font-semibold" href="#">
-                                                                    Marie Fox
-                                                                </a>
-                                                            </td>
-                                                            <td>28</td>
-                                                            <td>
-                                                                <a className="text-heading font-semibold" href="#">
-                                                                    Chemotherapy
-                                                                </a>
-                                                            </td>
-                                                            <td>Lorem ipsum dolor sit </td>
-                                                            <td>
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                                >
-                                                                    <i className="bi bi-eye-fill" />
-                                                                </button></td>
-
-                                                            <td>
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                                >
-                                                                    <i className="bi bi-trash" />
-                                                                </button>
-                                                            </td>
-
-                                                        </tr>
-
-
+                                                        {/* Patient F */}
+                                                        <PatientF />
 
                                                     </tbody>
                                                 </table>
@@ -295,82 +223,10 @@ function Dashboard() {
                                                 <tbody>
 
                                                     {/* Medical Recors */}
-                                                    <tr>
-                                                        <td>
-                                                            <img
-                                                                alt="Folders"
-                                                                src={Folders}
-                                                                className="avatar avatar-sm rounded-circle me-2"
-                                                            />
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                Radiography
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                            >
-                                                                <i className="bi bi-eye-fill" />
-                                                            </button></td>
-                                                        <td>
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                PDF
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                05/06/2023
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                            >
-                                                                <i className="bi bi-trash" />
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                    <MedicalRecord/>
 
                                                     {/* Medical Recors */}
-                                                    <tr>
-                                                        <td>
-                                                            <img
-                                                                alt="Folders"
-                                                                src={Folders}
-                                                                className="avatar avatar-sm rounded-circle me-2"
-                                                            />
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                Radiography
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                            >
-                                                                <i className="bi bi-eye-fill" />
-                                                            </button></td>
-                                                        <td>
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                PDF
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a className="text-heading font-semibold" href="#">
-                                                                05/06/2023
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-sm btn-square btn-neutral text-danger-hover"
-                                                            >
-                                                                <i className="bi bi-trash" />
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                    <MedicalRecord/>
 
                                                 </tbody>
                                             </table>
