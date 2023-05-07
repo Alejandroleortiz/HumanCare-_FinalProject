@@ -127,6 +127,11 @@ function Sidebar() {
                                                 </NavLink>
                                             </li>
                                             <li className="nav-item">
+                                                <NavLink className="nav-link" to="/add-records">
+                                                    <i className="bi bi-folder-plus" /> Add Medical Records
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
                                                 <NavLink className="nav-link" to="/support">
                                                     <i className="bi bi-info-circle" /> Support
                                                 </NavLink>

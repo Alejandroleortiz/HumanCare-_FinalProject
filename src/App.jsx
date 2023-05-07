@@ -15,6 +15,7 @@ import ProtectedRoute from './utils/ProtectedRoute'
 import injectContext, { GlobalContext } from './store/AppContext'
 
 import { useContext } from 'react'
+import AddRecords from './pages/AddRecords'
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='/account-patient' element={<AccountPatient />} />
         <Route path='/dashboard' element={<ProtectedRoute currentUser={currentUser}><Dashboard /></ProtectedRoute>} />
         <Route path='/medical-records' element={<ProtectedRoute currentUser={currentUser}><MedicalRecords /></ProtectedRoute>} />
+        <Route path='/add-records' element={<ProtectedRoute currentUser={currentUser}><AddRecords /></ProtectedRoute>} />
         <Route path='/patients' element={<ProtectedRoute currentUser={currentUser}><Patients /></ProtectedRoute>} />
         <Route path='/add-patients' element={<ProtectedRoute currentUser={currentUser}><AddPatient /></ProtectedRoute>} />
         <Route path='/profile' element={<ProtectedRoute currentUser={currentUser}><Profile /></ProtectedRoute>} />
