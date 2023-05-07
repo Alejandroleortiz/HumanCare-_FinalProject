@@ -9,6 +9,8 @@ function Sidebar() {
 
     return (
         <>
+
+
             <nav
                 className="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light
                  bg-light border-bottom border-bottom-lg-0 border-end-lg"
@@ -83,48 +85,65 @@ function Sidebar() {
                     <div className="collapse navbar-collapse" id="sidebarCollapse">
                         {/* Navigation */}
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/dashboard">
-                                    <i className="bi bi-speedometer2" /> Dashboard
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/medical-records">
-                                    <i className="bi bi-file-earmark-text" /> Medical Records
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/patients">
-                                    <i className="bi bi-people" /> Patients
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/add-patients">
-                                    <i className="bi bi-person-plus" /> Add Patients
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/support">
-                                    <i className="bi bi-info-circle" /> Support
-                                </NavLink>
-                            </li>
+
+                            {
+                                store?.currentUser && store?.currentUser?.user?.speciality !== "Patient Account" ?//Limitar la visualizacion segun el rol
+                                    (
+                                        <>
+                                        {/* Contenido para usuarios con especialidad diferente de Patient Account */}
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/dashboard">
+                                                    <i className="bi bi-speedometer2" /> Dashboard
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/patients">
+                                                    <i className="bi bi-people" /> Patients
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/add-patients">
+                                                    <i className="bi bi-person-plus" /> Add Patients
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/support">
+                                                    <i className="bi bi-info-circle" /> Support
+                                                </NavLink>
+                                            </li>
+
+                                        </>
+                                    ) : (
+                                        <>
+                                        {/* Contenido para usuarios con especialidad Patient Account */}
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/dashboard">
+                                                    <i className="bi bi-speedometer2" /> Dashboard
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/medical-records">
+                                                    <i className="bi bi-file-earmark-text" /> Medical Records
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
+                                                <NavLink className="nav-link" to="/support">
+                                                    <i className="bi bi-info-circle" /> Support
+                                                </NavLink>
+                                            </li>
+
+
+                                        </>
+                                    )
+                            }
+
+
 
                         </ul>
                         {/* Divider */}
                         <hr className="navbar-divider my-5 opacity-20" />
                         {/* Navigation */}
 
-                        {/* {
-                            !!store.currenUser ? //Limitar la visualizacion segun el rol
-                            (
-                                <>
-                                
-                                </>
-                            ):(
-                                <>
-                                </>
-                            )
-                        } */}
                         <ul className="navbar-nav mb-md-4">
                             <li>
                                 <div
@@ -132,8 +151,8 @@ function Sidebar() {
                                     to="#"
                                 >
                                     Active Users
-                                    <span className="badge bg-opacity-30 bg-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">
-                                        13
+                                    <span className="badge bg-opacity-30 bg-success text-white rounded-pill d-inline-flex align-items-center ms-4">
+                                        1
                                     </span>
                                 </div>
                             </li>
@@ -158,7 +177,7 @@ function Sidebar() {
                                         </span>
                                     </div>
                                     <div className="ms-auto">
-                                        <i className="bi bi-chat" />
+                                        <i className="bi bi-patch-check" />
                                     </div>
                                 </NavLink>
                             </li>
@@ -183,6 +202,7 @@ function Sidebar() {
                     </div>
                 </div>
             </nav>
+
         </>
     )
 }

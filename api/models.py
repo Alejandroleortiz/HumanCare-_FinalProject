@@ -9,7 +9,7 @@ class User(db.Model):
     gender = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone_number = db.Column(db.String(120), nullable=False)
-    speciality = db.Column(db.String(120), default = 'no speciality', nullable=True)
+    speciality = db.Column(db.String(120), default = 'Patient Account', nullable=True)
     city = db.Column(db.String(120), nullable=False)
     country = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
