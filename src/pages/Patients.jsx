@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/layouts/Layout'
 import PatientM from '../components/patients and records/PatientM'
-import PatientF from '../components/patients and records/PatientF'
+
 
 function Patients() {
     return (
@@ -29,6 +29,8 @@ function Patients() {
                                 <tbody>
 
                                     {/* Patient M */}
+
+
                                     <PatientM />
 
 

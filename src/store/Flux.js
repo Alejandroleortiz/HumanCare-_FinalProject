@@ -123,6 +123,50 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+            addPatient: async (e, navigate) => { 
+                //add-patient form
+                e.preventDefault()
+                
+                try {
+                    const { API_URL } = getStore()
+                    const { full_name,  } = e.target;
+                    const credentials = {
+                        full_name: full_name?.value,
+                    }
+
+
+
+                    const options = {
+                        method: 'POST',
+                        body: JSON.stringify(credentials),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+
+                    const response = await fetch(`${API_URL}/api/patient`, options)
+                    const data = await response.json()
+
+                    if (data.msg) {
+                        setStore({
+                            currentUser: null,
+                            error: data
+                        })
+
+                    } else {
+                        setStore({
+                            currentUser: data,
+                            error: null
+                        })
+                        sessionStorage.setItem('currentUser', JSON.stringify(data))
+                        navigate('/patients')
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+
+                }
+            },
 
         }
     }

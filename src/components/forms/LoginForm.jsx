@@ -38,7 +38,7 @@ function LoginForm() {
             <div className="row">
                 <div className="text-center mb-12">
                     <h1 className="ls-tight text-secondary font-bolder h2">Welcome to HumanCare</h1>
-                    <p className="mt-2">Let's build someting great</p>
+                    <p className="mt-2">Empowering Your Health, One Click at a Time</p>
                 </div>
 
                 <div className="container pt-4 pb-4 opacity-75 mt-4 rounded-4 w-50 bg-container">

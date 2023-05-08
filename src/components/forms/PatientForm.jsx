@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import AddPatient from '../../img/add-patient.png'
+import { GlobalContext } from '../../store/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 function PatientForm() {
+
+    const { state: { store, actions } } = useContext(GlobalContext);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (store.currentUser !== null) navigate('/patients')
+    }, [])
+
+
     return (
         <>
             <>
@@ -38,7 +50,10 @@ function PatientForm() {
                                     </div>
                                 </div>
                                 {/* Form */}
-                                <form className="mb-6 my-5 card shadow border mt-4 mb-10 p-5">
+                                <form onSubmit={(e) => {
+                                    e.preventDefault();
+                                    actions.addPatient(e, navigate)
+                                }} className="mb-6 my-5 card shadow border mt-4 mb-10 p-5">
 
                                     <div className="row mb-3">
                                         <div className="col-md-6">
@@ -79,7 +94,7 @@ function PatientForm() {
                                         <div className="col-md-6 g-5">
                                             <div className="">
                                                 <label className="form-label" htmlFor="phone_number">
-                                                Phone number
+                                                    Phone number
                                                 </label>
                                                 <input type="text" className="form-control" id="phone_number" />
                                             </div>
@@ -135,7 +150,7 @@ function PatientForm() {
                                         <div className="col-6">
                                             <div className="">
                                                 <label className="form-label" htmlFor="physical_examination">
-                                                Physical examination
+                                                    Physical examination
                                                 </label>
                                                 <input type="text" className="form-control" id="physical_examination" />
                                             </div>
@@ -151,7 +166,7 @@ function PatientForm() {
                                         <div className="col-6">
                                             <div className="">
                                                 <label className="form-label" htmlFor="treatment">
-                                                Treatment
+                                                    Treatment
                                                 </label>
                                                 <input type="text" className="form-control" id="treatment" />
                                             </div>
@@ -159,7 +174,7 @@ function PatientForm() {
                                         <div className="col-12">
                                             <div className="">
                                                 <label className="form-label" htmlFor="observations">
-                                                Observations
+                                                    Observations
                                                 </label>
                                                 <input type="text" className="form-control" id="observations" />
                                             </div>

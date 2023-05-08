@@ -3,32 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 import Doctor from '../../img/doctor.png';
 import UsuarioM from '../../img/Usuario.png';
 import '../../styles/index.css';
-import { GlobalContext } from '../../store/AppContext';
-import { useContext } from 'react';
-// import { useNavigate } from 'react-router-dom';
+
+
 
 const Users = () => {
 
-
-  // const { state: { store, actions } } = useContext(GlobalContext);
-
-  //Flux SetRole
-
-  // const navigate = useNavigate()
-
-  // const handleChooseRole = (role) => {
-  //   actions.setRole(role)
-  //   if (role === 1) {
-  //     navigate('/account-medical')
-  //   } else {
-  //     navigate('/account-patient')
-  //   }
-
-  // }
-
-  // useEffect(() => {
-  //   if (store.currentUser !== null) navigate('/')
-  // }, [])
 
   return (
     <>
