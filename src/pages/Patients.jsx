@@ -31,8 +31,6 @@ function Patients() {
                                     {/* Patient M */}
                                     <PatientM />
 
-                                    {/* Patient F */}
-                                    <PatientF />
 
                                 </tbody>
                             </table>

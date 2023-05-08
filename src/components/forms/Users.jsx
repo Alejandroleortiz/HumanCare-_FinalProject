@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import Doctor from '../../img/Doctor.png';
+import Doctor from '../../img/doctor.png';
 import UsuarioM from '../../img/Usuario.png';
 import '../../styles/index.css';
 import { GlobalContext } from '../../store/AppContext';

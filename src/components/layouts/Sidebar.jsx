@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import HumanCare from '../../img/Logo.png';
 import { GlobalContext } from '../../store/AppContext';
+import Female from '../../img/woman.png'
+import Masculine from '../../img/man.png'
 
 function Sidebar() {
 
@@ -13,7 +15,7 @@ function Sidebar() {
 
             <nav
                 className="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light
-                 bg-light border-bottom border-bottom-lg-0 border-end-lg"
+                 bg-light border border-top-0 border-bottom-0 min-vh-100"
                 id="navbarVertical"
             >
                 <div className="container-fluid">
@@ -41,45 +43,7 @@ function Sidebar() {
                     {/* User menu (mobile) */}
                     <div className="navbar-user d-lg-none">
                         {/* Dropdown */}
-                        <div className="dropdown">
-                            {/* Toggle */}
-                            <NavLink
-                                to="#"
-                                id="sidebarAvatar"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <div className="avatar-parent-child">
-                                    <img
-                                        alt="Image Placeholder"
-                                        src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                                        className="avatar avatar- rounded-circle"
-                                    />
-                                    <span className="avatar-child avatar-badge bg-success" />
-                                </div>
-                            </NavLink>
-                            {/* Menu */}
-                            <div
-                                className="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="sidebarAvatar"
-                            >
-                                <NavLink to="#" className="dropdown-item">
-                                    Profile
-                                </NavLink>
-                                <NavLink to="#" className="dropdown-item">
-                                    Settings
-                                </NavLink>
-                                <NavLink to="#" className="dropdown-item">
-                                    Billing
-                                </NavLink>
-                                <hr className="dropdown-divider" />
-                                <NavLink to="#" className="dropdown-item">
-                                    Logout
-                                </NavLink>
-                            </div>
-                        </div>
+
                     </div>
                     {/* Collapse */}
                     <div className="collapse navbar-collapse" id="sidebarCollapse">
@@ -90,7 +54,7 @@ function Sidebar() {
                                 store?.currentUser && store?.currentUser?.user?.speciality !== "Patient Account" ?//Limitar la visualizacion segun el rol
                                     (
                                         <>
-                                        {/* Contenido para usuarios con especialidad diferente de Patient Account */}
+                                            {/* Contenido para usuarios con especialidad diferente de Patient Account */}
                                             <li className="nav-item">
                                                 <NavLink className="nav-link" to="/dashboard">
                                                     <i className="bi bi-speedometer2" /> Dashboard
@@ -115,7 +79,7 @@ function Sidebar() {
                                         </>
                                     ) : (
                                         <>
-                                        {/* Contenido para usuarios con especialidad Patient Account */}
+                                            {/* Contenido para usuarios con especialidad Patient Account */}
                                             <li className="nav-item">
                                                 <NavLink className="nav-link" to="/dashboard">
                                                     <i className="bi bi-speedometer2" /> Dashboard
@@ -142,14 +106,10 @@ function Sidebar() {
                                     )
                             }
 
+                            {/* Divider */}
 
+                            <hr className="navbar-divider my-5 opacity-20" />
 
-                        </ul>
-                        {/* Divider */}
-                        <hr className="navbar-divider my-5 opacity-20" />
-                        {/* Navigation */}
-
-                        <ul className="navbar-nav mb-md-4">
                             <li>
                                 <div
                                     className="nav-link text-xs font-semibold text-uppercase text-muted ls-wide"
@@ -165,11 +125,31 @@ function Sidebar() {
                                 <NavLink to="#" className="nav-link d-flex align-items-center">
                                     <div className="me-4">
                                         <div className="position-relative d-inline-block text-white">
-                                            <img
-                                                alt="Image Placeholder"
-                                                src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                                                className="avatar rounded-circle"
-                                            />
+
+                                            {
+                                                store?.currentUser && store?.currentUser?.user?.gender !== "Female" ?//Limitar la visualizacion segun el rol
+                                                    (
+                                                        <>
+                                                            {/* Contenido para usuarios con genero diferente a Female */}
+                                                            <img
+                                                                alt="Image Placeholder"
+                                                                src={Masculine}
+                                                                className="avatar rounded-circle"
+                                                            />
+
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            {/* Contenido para usuarios con genero Female */}
+                                                            <img
+                                                                alt="Image Placeholder"
+                                                                src={Female}
+                                                                className="avatar rounded-circle"
+                                                            />
+
+                                                        </>
+                                                    )
+                                            }
                                             <span className="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle" />
                                         </div>
                                     </div>
@@ -187,15 +167,9 @@ function Sidebar() {
                                 </NavLink>
                             </li>
 
-
-                        </ul>
-                        {/* Push content down */}
-                        <div className="mt-auto" />
-                        {/* User (md) */}
-                        <ul className="navbar-nav">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/profile">
-                                    <i className="bi bi-person-square" /> Profile
+                                    <i className="bi bi-person" /> Profile
                                 </NavLink>
                             </li>
                             <li className="nav-item">
@@ -203,7 +177,9 @@ function Sidebar() {
                                     <i className="bi bi-box-arrow-left" /> Logout
                                 </button>
                             </li>
+
                         </ul>
+
                     </div>
                 </div>
             </nav>

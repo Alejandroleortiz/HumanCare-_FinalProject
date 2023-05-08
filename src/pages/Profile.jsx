@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import Layout from '../components/layouts/Layout'
 import { GlobalContext } from '../store/AppContext'
+import Female from '../img/woman.png'
+import Masculine from '../img/man.png'
 
 
 function Profile() {
@@ -25,12 +27,34 @@ function Profile() {
                                                 borderBottomLeftRadius: ".5rem"
                                             }}
                                         >
-                                            <img
-                                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                                alt="Avatar"
-                                                className="img-fluid my-5"
-                                                style={{ width: 80 }}
-                                            />
+
+                                            {
+                                                store?.currentUser && store?.currentUser?.user?.gender !== "Female" ?//Limitar la visualizacion segun el rol
+                                                    (
+                                                        <>
+                                                            {/* Contenido para usuarios con genero diferente a Female */}
+                                                            <img
+                                                                src={Masculine}
+                                                                alt="Avatar"
+                                                                className="img-fluid my-5"
+                                                                style={{ width: 80 }}
+                                                            />
+
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            {/* Contenido para usuarios con genero Female */}
+                                                            <img
+                                                                src={Female}
+                                                                alt="Avatar"
+                                                                className="img-fluid my-5"
+                                                                style={{ width: 80 }}
+                                                            />
+
+                                                        </>
+                                                    )
+                                            }
+ 
                                             <h5>{store?.currentUser?.user?.first_name} {store?.currentUser?.user?.last_name}</h5>
                                             <p>{store?.currentUser?.user?.speciality}</p>
                                             <i className="far fa-edit mb-5" />

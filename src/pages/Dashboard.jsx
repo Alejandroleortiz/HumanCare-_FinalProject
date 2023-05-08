@@ -114,9 +114,6 @@ function Dashboard() {
                                                         {/* Patient M */}
                                                         <PatientM />
 
-                                                        {/* Patient F */}
-                                                        <PatientF />
-
                                                     </tbody>
                                                 </table>
                                             </table>

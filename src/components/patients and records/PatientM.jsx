@@ -1,5 +1,5 @@
 import React from 'react'
-import Masculine from '../../img/Usuario.png'
+import Patient from '../../img/patient.png'
 
 function PatientM() {
   return (
@@ -9,7 +9,7 @@ function PatientM() {
         <td>
           <img
             alt="avatar"
-            src={Masculine}
+            src={Patient}
             className="avatar avatar-sm rounded-circle me-2"
           />
           <a className="text-heading font-semibold" href="#">
