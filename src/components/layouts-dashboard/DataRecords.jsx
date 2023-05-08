@@ -12,7 +12,7 @@ function DataRecords() {
                                     <span className="h6 font-semibold text-muted text-sm d-block mb-2">
                                         Available Medical Records
                                     </span>
-                                    <span className="h3 font-bold mb-0">215</span>
+                                    <span className="h3 font-bold mb-0">0</span>
                                 </div>
                                 <div className="col-auto">
                                     <div className="icon icon-shape bg-success text-white text-lg rounded-circle">
@@ -31,7 +31,7 @@ function DataRecords() {
                                     <span className="h6 font-semibold text-muted text-sm d-block mb-2">
                                         Total Count of Medical Records
                                     </span>
-                                    <span className="h3 font-bold mb-0">1.400</span>
+                                    <span className="h3 font-bold mb-0">0</span>
                                 </div>
                                 <div className="col-auto">
                                     <div className="icon icon-shape bg-info text-white text-lg rounded-circle">

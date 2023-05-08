@@ -4,16 +4,18 @@ const getState = ({ getStore, getActions, setStore }) => {
             API_URL: 'http://127.0.0.1:9000',
             currentUser: null,
             error: null,
+            currentPatient: null,
+            patients:[],
 
         },
         actions: {
 
             generico: null,
 
-            register: async (e, navigate, userRole) => { 
+            register: async (e, navigate, userRole) => {
                 //signup
                 e.preventDefault()
-                
+
                 try {
                     const { API_URL } = getStore()
                     const { first_name, last_name, gender, email, phone_number, speciality, city,
@@ -123,18 +125,37 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-            addPatient: async (e, navigate) => { 
+            addPatient: async (e, navigate) => {
                 //add-patient form
                 e.preventDefault()
-                
+
+                const store = getStore();
+
                 try {
                     const { API_URL } = getStore()
-                    const { full_name,  } = e.target;
+
+                    const { full_name, age, identity_card, adress, phone_number,
+                        reason_for_consultation, current_illness, criminal_record,
+                        family_history, surgical_history,
+                        physical_examination, diagnosis, treatment, observations } = e.target;
+
                     const credentials = {
+                        user_id: store.currentUser?.id, // Agregar el id del usuario actual aquí
                         full_name: full_name?.value,
+                        age: age?.value,
+                        identity_card: identity_card?.value,
+                        adress: adress?.value,
+                        phone_number: phone_number?.value,
+                        reason_for_consultation: reason_for_consultation?.value,
+                        current_illness: current_illness?.value,
+                        criminal_record: criminal_record?.value,
+                        family_history: family_history?.value,
+                        surgical_history: surgical_history?.value,
+                        physical_examination: physical_examination?.value,
+                        diagnosis: diagnosis?.value,
+                        treatment: treatment?.value,
+                        observations: observations?.value,
                     }
-
-
 
                     const options = {
                         method: 'POST',
@@ -149,16 +170,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     if (data.msg) {
                         setStore({
-                            currentUser: null,
+                            currentPatient: null,
                             error: data
                         })
 
                     } else {
                         setStore({
-                            currentUser: data,
+                            currentPatient: data,
                             error: null
                         })
-                        sessionStorage.setItem('currentUser', JSON.stringify(data))
+                        sessionStorage.setItem('currentPatient', JSON.stringify(data))
                         navigate('/patients')
                     }
 
@@ -167,6 +188,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 }
             },
+
+            checkCurrentPatients: () => { //mantener la información del currentPatient
+                if (sessionStorage.getItem('currentPatient')) {
+                    setStore({
+                        currentPatient: JSON.parse(sessionStorage.getItem('currentPatient'))
+                    })
+                }
+            },
+
+            getPatients: async () => { // Obtener pacientes del usario
+
+                try {
+                    const { API_URL } = getStore()
+                    const response = await fetch(`${API_URL}/api/patients`);
+                    console.log(response);
+                    const info = await response.json();
+                    console.log(info)
+
+                    setStore({ patients: info });
+
+                } catch (error) {
+                    console.log(error.message);
+                }
+            }
 
         }
     }

@@ -1,7 +1,8 @@
 import React from 'react'
 import Patient from '../../img/patient.png'
 
-function PatientM() {
+function PatientM({ Name, Age, Treatment, Observations }) {
+
   return (
     <>
       {/* Patient M */}
@@ -13,16 +14,16 @@ function PatientM() {
             className="avatar avatar-sm rounded-circle me-2"
           />
           <a className="text-heading font-semibold" href="#">
-            Robert Fox
+            {Name}
           </a>
         </td>
-        <td>28</td>
+        <td>{Age}</td>
         <td>
           <a className="text-heading font-semibold" href="#">
-            Chemotherapy
+            {Treatment}
           </a>
         </td>
-        <td>Lorem ipsum dolor sit </td>
+        <td>{Observations} </td>
         <td>
           <button
             type="button"

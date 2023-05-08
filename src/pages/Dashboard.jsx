@@ -11,49 +11,13 @@ import DataRecords from '../components/layouts-dashboard/DataRecords';
 
 
 function Dashboard() {
-
-    useEffect(() => {
-        getData();
-    }, [])
-
-    const [data, setData] = useState([]);
-
-    // Comunicacion HTTP: GET, POST, PUT, DELETE
-
-    //Variable Url -> Creacion del Recurso
-    const [url] = useState('http://localhost:3001');
-
-    // Fetch -> GET -----------------------------------------------------------
-
-    const getData = () => {
-
-        const options = {
-            method: 'GET',
-            //  body:
-            headers: {
-                'Content-Type': 'application/json'
-            }
-
-        }
-
-        fetch(`${url}/notes`, options)
-            .then((response) => {
-                console.log(response)
-
-                return response.json(); // Respuesta del Servidor
-            })
-            .then((data) => {
-                console.log(data);
-                setData(data);
-            })
-            .catch((error) => {
-                console.log(error.message);
-            })
-    }
-
     //-------------------------------------------------------------------------
 
     const { state: { store, actions } } = useContext(GlobalContext)
+
+    useEffect(() => {
+        actions.getPatients(); // Llama a la función getPatients aquí
+    }, []);
 
     return (
         <>
@@ -98,24 +62,45 @@ function Dashboard() {
                                         <>
                                             {/* Contenido para usuarios con especialidad diferente de Patient Account */}
                                             <table className="table table-hover table-nowrap">
-                                                <table className="table table-hover table-nowrap">
-                                                    <thead className="table-light">
-                                                        <tr>
-                                                            <th scope="col">Full Name</th>
-                                                            <th scope="col">Age</th>
-                                                            <th scope="col">Treatment</th>
-                                                            <th scope="col">Observations</th>
-                                                            <th scope="col">View</th>
-                                                            <th scope="col">Delete</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
 
-                                                        {/* Patient M */}
-                                                        <PatientM />
+                                                <thead className="table-light">
+                                                    <tr>
+                                                        <th scope="col">Full Name</th>
+                                                        <th scope="col">Age</th>
+                                                        <th scope="col">Treatment</th>
+                                                        <th scope="col">Observations</th>
+                                                        <th scope="col">View</th>
+                                                        <th scope="col">Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                    </tbody>
-                                                </table>
+                                                    {/* Patient M */}
+                                                    { // Mapeo de Pacientes
+
+                                                        store?.patients?.length > 0 ?
+                                                            store?.patients?.map((data) => {
+                                                                console.log("aqui estoy", store?.patients?.length);
+                                                                return (
+                                                                    <PatientM
+                                                                        key={data.id}
+                                                                        Name={data.full_name}
+                                                                        Age={data.age}
+                                                                        Treatment={data.treatment}
+                                                                        Observations={data.observations}
+                                                                    />
+                                                                )
+                                                            })
+                                                            :
+                                                            (<>
+                                                                <PatientM
+                                                                    Name='hola'
+                                                                />
+                                                            </>)
+                                                    }
+
+                                                </tbody>
+
                                             </table>
 
                                         </>

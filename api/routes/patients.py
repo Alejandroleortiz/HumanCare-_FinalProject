@@ -29,8 +29,8 @@ def add_patient():
     if not patient.id:
         return jsonify({ "msg": "patient required"}), 422
     
-    if patient.id:
-        return jsonify({ "msg": "patient already exists"}), 400
+    # if patient.id:
+    #     return jsonify({ "msg": "patient already exists"}), 400
 
     
     

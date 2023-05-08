@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../components/layouts/Layout'
 import PatientM from '../components/patients and records/PatientM'
+import { GlobalContext } from '../store/AppContext';
+
+
 
 
 function Patients() {
+
+    const { state: { store, actions } } = useContext(GlobalContext);
+
+    useEffect(() => {
+        actions.getPatients(); // Llama a la función getPatients aquí
+    }, []);
+
     return (
         <>
             <Layout includeSidebar>
@@ -29,9 +39,33 @@ function Patients() {
                                 <tbody>
 
                                     {/* Patient M */}
+                                    {/* Patient M */}
 
 
-                                    <PatientM />
+                                    { // Mapeo de Pacientes
+
+                                        store?.patients?.length > 0 ?
+                                            store?.patients?.map((data) => {
+                                                console.log("aqui estoy", store?.patients?.length);
+                                                return (
+                                                    <PatientM
+                                                        key={data.id}
+                                                        Name={data.full_name}
+                                                        Age={data.age}
+                                                        Treatment={data.treatment}
+                                                        Observations={data.observations}
+                                                    />
+                                                )
+                                            })
+                                            :
+                                            (<>
+                                                <PatientM
+                                                Name='hola'
+                                                />
+                                            </>)
+                                    }
+
+
 
 
                                 </tbody>

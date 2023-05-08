@@ -29,6 +29,8 @@ db.init_app(app)
 Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
+# CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 app.register_blueprint(bp)
 app.register_blueprint(bpAuth, url_prefix='/api')

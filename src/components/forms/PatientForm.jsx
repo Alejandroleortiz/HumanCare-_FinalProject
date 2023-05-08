@@ -9,9 +9,9 @@ function PatientForm() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (store.currentUser !== null) navigate('/patients')
-    }, [])
+    // useEffect(() => {
+    //     if (store.currentPatient !== null) navigate('/patients')
+    // }, [])
 
 
     return (
@@ -52,6 +52,7 @@ function PatientForm() {
                                 {/* Form */}
                                 <form onSubmit={(e) => {
                                     e.preventDefault();
+                                    console.log("estoy aqui");
                                     actions.addPatient(e, navigate)
                                 }} className="mb-6 my-5 card shadow border mt-4 mb-10 p-5">
 
