@@ -11,7 +11,8 @@ function Patients() {
     const { state: { store, actions } } = useContext(GlobalContext);
 
     useEffect(() => {
-        actions.getPatients(); // Llama a la función getPatients aquí
+        actions.getPatients();
+        // actions.deletePatient(); // Llama a la función getPatients aquí
     }, []);
 
     return (
@@ -33,7 +34,7 @@ function Patients() {
                                         <th scope="col">Treatment</th>
                                         <th scope="col">Observations</th>
                                         <th scope="col">View</th>
-                                        <th scope="col">Delete</th>
+                                        {/* <th scope="col">Delete</th> */}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,18 +51,18 @@ function Patients() {
                                                 return (
                                                     <PatientM
                                                         key={data.id}
+                                                        id={data.id}
                                                         Name={data.full_name}
                                                         Age={data.age}
                                                         Treatment={data.treatment}
                                                         Observations={data.observations}
+                                                        // Delete={actions?.deletePatient}
                                                     />
                                                 )
                                             })
                                             :
                                             (<>
-                                                <PatientM
-                                                Name='hola'
-                                                />
+
                                             </>)
                                     }
 

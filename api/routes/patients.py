@@ -42,3 +42,30 @@ def get_patients():
     patients = Medical_record.query.all()
     patients = list(map(lambda patient: patient.serialize(), patients))
     return jsonify(patients), 200
+
+@bpPatient.route('/patients/<int:id>', methods=['DELETE'])
+def delete_patient(id):
+    # Busca el usuario por su ID
+    patient = Medical_record.query.get(id)
+
+    # Si no se encuentra el usuario, devuelve este mensaje
+    if not patient:
+        return jsonify({"msg": "patient not found"}), 404
+
+    # Eliminar el usuario de la base de datos
+    patient.delete()
+
+    # Devuelve un mensaje de eliminacion exitosa
+    return jsonify({"msg": "patient successfully deleted"}), 200
+
+@bpPatient.route('/patients', methods=['DELETE'])
+def delete_all_patient():
+    # Busca el usuario por su ID
+    patients = Medical_record.query.all()
+    for patient in patients:
+    # Eliminar el pacientes de la base de datos
+        patients.delete(patient)
+    patients.commit()
+
+    # Devuelve un mensaje de eliminacion exitosa
+    return jsonify({"msg": "All patients successfully deleted"}), 200

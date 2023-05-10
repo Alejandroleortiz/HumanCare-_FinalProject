@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentUser: null,
             error: null,
             currentPatient: null,
-            patients:[],
+            patients: [],
 
         },
         actions: {
@@ -204,14 +204,36 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const response = await fetch(`${API_URL}/api/patients`);
                     console.log(response);
                     const info = await response.json();
-                    console.log(info)
+
 
                     setStore({ patients: info });
 
                 } catch (error) {
                     console.log(error.message);
                 }
-            }
+            },
+
+            // deletePatient: async (id) => {
+            //     const { API_URL, actions:{getPatients} } = getStore();
+            //     const options = {
+            //         method: "DELETE",
+            //         headers: {
+            //             "Content-Type": "application/json",
+            //         },
+            //     };
+
+            //     try {
+            //         const response = await fetch(`${API_URL}/api/patients/${id}`, options);
+
+            //         if (response.status === 200) {
+            //             getPatients(); // Llama a la función getPatients para actualizar la lista de pacientes
+            //         } else {
+            //             setError("Error trying to Delete");
+            //         }
+            //     } catch (error) {
+            //         console.log(error.message);
+            //     }
+            // },
 
         }
     }

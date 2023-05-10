@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3cd23121700d
+Revision ID: 39a19c365115
 Revises: 
-Create Date: 2023-05-02 22:50:36.026403
+Create Date: 2023-05-09 19:38:40.311291
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3cd23121700d'
+revision = '39a19c365115'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,11 +31,11 @@ def upgrade():
     sa.Column('gender', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('phone_number', sa.String(length=120), nullable=False),
-    sa.Column('speciality', sa.String(length=120), nullable=False),
+    sa.Column('speciality', sa.String(length=120), nullable=True),
     sa.Column('city', sa.String(length=120), nullable=False),
     sa.Column('country', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=120), nullable=False),
-    sa.Column('profile_picture', sa.String(length=150), nullable=False),
+    sa.Column('profile_picture', sa.String(length=150), nullable=True),
     sa.Column('roles_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['roles_id'], ['roles.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -55,8 +55,10 @@ def upgrade():
     op.create_table('medical_file',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('filename', sa.String(length=255), nullable=False),
     sa.Column('file', sa.String(length=150), nullable=False),
     sa.Column('date', sa.DateTime(), nullable=False),
+    sa.Column('public_id', sa.String(length=100), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

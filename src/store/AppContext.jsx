@@ -20,6 +20,7 @@ const injectContext = (PassComponent) => {
       // Aqui coloco las funciones que quiero que se ejecuten una vez cargadas las imagenes
       state.actions.checkCurrentUser()
       state.actions.getPatients()
+      // state.actions.deletePatient()
     }, [])
 
     useEffect(() => {

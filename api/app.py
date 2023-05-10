@@ -1,4 +1,5 @@
 import os
+import cloudinary
 from flask import Flask, request, jsonify
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
@@ -13,6 +14,7 @@ from routes.users import bpUser
 from routes.patients import bpPatient
 from routes.medical_file import bpFile
 from routes.appoinment import bpAppoinment
+
 
 load_dotenv()
 
@@ -29,7 +31,13 @@ db.init_app(app)
 Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
-# CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+cloudinary.config(
+    cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key = os.getenv('CLOUDINARY_CLOUD_API_KEY'),
+    api_secret = os.getenv('CLOUDINARY_CLOUD_API_SECRET'),
+    secure = True
+)
 
 
 app.register_blueprint(bp)

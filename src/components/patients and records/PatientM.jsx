@@ -1,7 +1,7 @@
 import React from 'react'
 import Patient from '../../img/patient.png'
 
-function PatientM({ Name, Age, Treatment, Observations }) {
+function PatientM({ Name, Age, Treatment, Observations}) {
 
   return (
     <>
@@ -30,16 +30,21 @@ function PatientM({ Name, Age, Treatment, Observations }) {
             className="btn btn-sm btn-square btn-neutral text-danger-hover"
           >
             <i className="bi bi-eye-fill" />
-          </button></td>
+          </button>
+          </td>
 
-        <td>
-          <button
+        {/* <td>  */}
+          {/* <button
             type="button"
             className="btn btn-sm btn-square btn-neutral text-danger-hover"
+            onClick={() => {
+              Delete(id);
+              console.log('Delete: User (', id, ") -> ", Name);
+            }}
           >
             <i className="bi bi-trash" />
-          </button>
-        </td>
+          </button> */}
+        {/* </td> */}
 
       </tr>
     </>

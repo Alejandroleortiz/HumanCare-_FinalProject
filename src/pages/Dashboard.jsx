@@ -70,7 +70,7 @@ function Dashboard() {
                                                         <th scope="col">Treatment</th>
                                                         <th scope="col">Observations</th>
                                                         <th scope="col">View</th>
-                                                        <th scope="col">Delete</th>
+                                                        {/* <th scope="col">Delete</th> */}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -93,9 +93,6 @@ function Dashboard() {
                                                             })
                                                             :
                                                             (<>
-                                                                <PatientM
-                                                                    Name='hola'
-                                                                />
                                                             </>)
                                                     }
 

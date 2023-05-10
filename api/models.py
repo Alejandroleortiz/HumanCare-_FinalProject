@@ -81,13 +81,16 @@ class Medical_file(db.Model):
     __tablename__ = 'medical_file'
     id = db.Column(db.Integer, primary_key=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
+    filename = db.Column(db.String(255), nullable=False)
     file = db.Column(db.String(150), nullable=False)
     date = db.Column(db.DateTime(), default=db.func.now(), nullable=False)
+    public_id = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
+            "filename": self.filename,
             "file": self.file,
             "date": self.date,
         }
