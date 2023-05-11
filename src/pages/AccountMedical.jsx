@@ -124,12 +124,12 @@ const AccountMedical = () => {
                     aria-label="Default select example"
                   >
                     <option defaultValue="" >Choose your area of interest</option>
-                    <option value={'Medicina General'}>Medicina General</option>
-                    <option value={'Pediatria'}>Pediatria</option>
-                    <option value={'Medicina Interna'}>Medicina Interna</option>
-                    <option value={'Ginecologia'}>Ginecologia</option>
-                    <option value={'Neurologia'}>Neurologia</option>
-                    <option value={'Oftalmologia'}>Oftalmologia</option>
+                    <option value={'Internal medicine'}>Internal medicine</option>
+                    <option value={'Pediatrics'}>Pediatrics</option>
+                    <option value={'Urology'}>Urology</option>
+                    <option value={'Gynecology'}>Gynecology</option>
+                    <option value={'Neurology'}>Neurology</option>
+                    <option value={'Ophthalmology'}>Ophthalmology</option>
                   </select>
                 </div>
               </div>

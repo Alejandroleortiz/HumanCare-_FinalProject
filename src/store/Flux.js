@@ -141,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         physical_examination, diagnosis, treatment, observations } = e.target;
 
                     const credentials = {
-                        user_id: store.currentUser?.id, // Agregar el id del usuario actual aquí
+                        // user_id: store.currentUser?.id, // Agregar el id del usuario actual aquí
                         full_name: full_name?.value,
                         age: age?.value,
                         identity_card: identity_card?.value,
@@ -158,11 +158,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                         observations: observations?.value,
                     }
 
+                    const token = store.currentUser?.access_token; // Obtén el token del usuario actual
+
                     const options = {
                         method: 'POST',
                         body: JSON.stringify(credentials),
                         headers: {
+                            Authorization: `Bearer ${token}`,
                             'Content-Type': 'application/json'
+                            
                         }
                     }
 

@@ -1,13 +1,16 @@
 from flask import Blueprint, request, jsonify
 from models import Medical_record
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 bpPatient = Blueprint('bpPatient', __name__)
 
 @bpPatient.route('/patient', methods=['POST']) #Agregar Paciente
+@jwt_required()
 def add_patient():
     datos = request.get_json()
     
     patient = Medical_record()
+    patient.user_id = get_jwt_identity() # Asignar user_id después de inicializar 'patient'
     patient.full_name = datos['full_name']
     patient.age = datos['age']
     patient.identity_card = datos['identity_card']
