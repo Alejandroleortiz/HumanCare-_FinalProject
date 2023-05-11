@@ -5,7 +5,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentUser: null,
             error: null,
             currentPatient: null,
-            patients: [],
             currentRecords: null,
 
         },
@@ -204,19 +203,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             getPatients: async () => { // Obtener pacientes del usario
 
+                const store = getStore();
+
+                const token = store.currentUser?.access_token; // Obtén el token del usuario actual
+
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                };
+
                 try {
                     const { API_URL } = getStore()
-                    const response = await fetch(`${API_URL}/api/patients`);
-                    console.log(response);
-                    const info = await response.json();
+                    const response = await fetch(`${API_URL}/api/patient`, options);
+                    const data = await response.json();
 
-
-                    setStore({ patients: info });
-
+                    if (response.ok) {
+                        setStore({
+                            currentPatient: data,
+                        });
+                    } else {
+                        console.error('Error getting patients:', data);
+                    }
                 } catch (error) {
-                    console.log(error.message);
+                    console.error('Error getting patients:', error);
                 }
             },
+
+
 
             // deletePatient: async (id) => {
             //     const { API_URL, actions:{getPatients} } = getStore();

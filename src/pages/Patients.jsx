@@ -45,9 +45,9 @@ function Patients() {
 
                                     { // Mapeo de Pacientes
 
-                                        store?.patients?.length > 0 ?
-                                            store?.patients?.map((data) => {
-                                                console.log("aqui estoy", store?.patients?.length);
+                                        store?.currentPatient?.length > 0 ?
+                                            store?.currentPatient?.map((data) => {
+                                                console.log("aqui estoy", store?.currentPatient?.length);
                                                 return (
                                                     <PatientM
                                                         key={data.id}

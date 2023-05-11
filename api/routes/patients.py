@@ -40,13 +40,15 @@ def add_patient():
     return jsonify(patient.serialize())
 
 
-@bpPatient.route('/patients', methods=['GET']) #Obtener todos los pacientes
+@bpPatient.route('/patient', methods=['GET']) #Obtener todos los pacientes
+@jwt_required()
 def get_patients():
-    patients = Medical_record.query.all()
+    user_id = get_jwt_identity() # Obtener el id del usuario autenticado
+    patients = Medical_record.query.filter_by(user_id=user_id).all() # Filtrar los pacientes por el id del usuario
     patients = list(map(lambda patient: patient.serialize(), patients))
     return jsonify(patients), 200
 
-@bpPatient.route('/patients/<int:id>', methods=['DELETE'])
+@bpPatient.route('/patient/<int:id>', methods=['DELETE'])
 def delete_patient(id):
     # Busca el usuario por su ID
     patient = Medical_record.query.get(id)
@@ -61,7 +63,7 @@ def delete_patient(id):
     # Devuelve un mensaje de eliminacion exitosa
     return jsonify({"msg": "patient successfully deleted"}), 200
 
-@bpPatient.route('/patients', methods=['DELETE'])
+@bpPatient.route('/patient', methods=['DELETE'])
 def delete_all_patient():
     # Busca el usuario por su ID
     patients = Medical_record.query.all()
