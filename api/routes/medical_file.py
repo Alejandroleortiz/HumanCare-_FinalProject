@@ -33,17 +33,30 @@ def add_medical_file():
 
    
     
-    # datos = request.get_json()
+@bpFile.route('/medical-file/<int:id>', methods=['PUT']) #Actualizar Historial medico y archivos medicos
+def update_medical_file(id):
+    archive = Medical_file.query.get(id) #Capturo el archivo
     
-    # if not 'file' in datos:
-    #     return jsonify({ "msg": "Medical File required"}), 422
+    if not archive:
+        return jsonify({"msg":"archive not found"}), 404
     
+    filename = request.form['filename'] #Si existe continuo
+
+    if not filename:
+        return jsonify({ "msg": "The filename is required"}), 400    #Capturo el nombre del archivo
+
+    if not 'file' in request.files:
+        return jsonify({ "msg": "The file is required"}), 400    #Pregunto y Capturo el archivo
     
-    # medicalFile = Medical_file()
-    # medicalFile.file = datos['file']
-    # medicalFile.user_id = datos['user_id']
-   
+    file = request.files['file']
+    resp = upload(file, folder="archives", public_id=archive.public_id) #Modifico en el repositorio de claudinary, el public id guardado
     
-    # medicalFile.save()
+    if not resp:
+        return jsonify({"msg":"Error uploading file"}), 400
+
     
-    # return jsonify(medicalFile.serialize())
+    archive.filename = filename
+    archive.file = resp['secure_url']
+    archive.update()
+    
+    return jsonify(archive.serialize()), 200

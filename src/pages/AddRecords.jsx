@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layouts/Layout'
+import RecordsForm from '../components/forms/RecordsForm'
 
 function AddRecords() {
     return (
@@ -48,18 +49,13 @@ function AddRecords() {
                                         className="border border-4 border-dashed rounded d-flex flex-column justify-content-center align-items-center"
                                         style={{ minHeight: 400 }}
                                     >
-                                        <div className="h4 font-semibold text-muted opacity-8">
+                                        <div className="h4 font-semibold text-muted opacity-8 ">
 
                                             <>
-                                                <label className="form-label" htmlFor="input_file">
+                                                <label className="form-label " htmlFor="input_file">
                                                     {/* Choose file */}
                                                 </label>
-                                                <input
-                                                    type="file"
-                                                    className="form-control"
-                                                    id="input_file"
-                                                    placeholder="Your email"
-                                                />
+                                                <RecordsForm/>
                                             </>
 
 

@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             error: null,
             currentPatient: null,
             patients: [],
+            currentRecords: null,
 
         },
         actions: {
@@ -234,6 +235,60 @@ const getState = ({ getStore, getActions, setStore }) => {
             //         console.log(error.message);
             //     }
             // },
+            //-----------------------------------------------------Actions Files -----------------------------------------------//
+
+            uploadFile: async (e, navigate) => {
+                //add-patient form
+                e.preventDefault()
+
+                const store = getStore();
+
+                try {
+                    const { API_URL } = getStore()
+
+                    const { file, filename } = e.target;
+
+                    const formData = new FormData();
+                    formData.append("user_id", store.currentUser?.id); // Agregar el id del usuario actual aquí
+                    formData.append("file", file?.files[0]);
+                    formData.append("filename", filename?.value);
+
+                    const options = {
+                        method: 'POST',
+                        body: formData,
+                    }
+
+                    const response = await fetch(`${API_URL}/api/medical-file`, options)
+                    const data = await response.json()
+
+                    if (data.msg) {
+                        setStore({
+                            currentRecords: null,
+                            error: data
+                        })
+
+                    } else {
+                        setStore({
+                            currentRecords: data,
+                            error: null
+                        })
+                        sessionStorage.setItem('currentRecords', JSON.stringify(data))
+                        navigate('/medical-records')
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+
+                }
+            },
+
+            checkUploadFile: () => { //mantener la información del currentRecords
+                if (sessionStorage.getItem('currentRecords')) {
+                    setStore({
+                        currentRecords: JSON.parse(sessionStorage.getItem('currentRecords'))
+                    })
+                }
+            },
 
         }
     }
