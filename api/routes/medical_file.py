@@ -1,11 +1,14 @@
 from flask import Blueprint, request, jsonify
 from cloudinary.uploader import upload
 from models import Medical_file
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 bpFile = Blueprint('bpFile', __name__)
 
 @bpFile.route('/medical-file', methods=['POST']) #Agregar Historial medico y archivos medicos
+@jwt_required()
 def add_medical_file():
+    
     filename = request.form['filename']
 
     if not filename:
@@ -23,6 +26,7 @@ def add_medical_file():
 
     
     archive = Medical_file()
+    archive.user_id = get_jwt_identity() # Asignar user_id después de inicializar 'archive'
     archive.filename = filename
     archive.file = resp['secure_url']
     archive.public_id = public_id

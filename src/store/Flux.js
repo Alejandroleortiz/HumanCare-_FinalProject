@@ -249,13 +249,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                     const { file, filename } = e.target;
 
                     const formData = new FormData();
-                    formData.append("user_id", store.currentUser?.id); // Agregar el id del usuario actual aquí
+                    // formData.append("user_id", store.currentUser?.id); // Agregar el id del usuario actual aquí
                     formData.append("file", file?.files[0]);
                     formData.append("filename", filename?.value);
+
+                    const token = store.currentUser?.access_token; // Obtén el token del usuario actual
 
                     const options = {
                         method: 'POST',
                         body: formData,
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
                     }
 
                     const response = await fetch(`${API_URL}/api/medical-file`, options)
