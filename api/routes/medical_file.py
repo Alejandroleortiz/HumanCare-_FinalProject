@@ -64,3 +64,13 @@ def update_medical_file(id):
     archive.update()
     
     return jsonify(archive.serialize()), 200
+
+
+
+@bpFile.route('/medical-file', methods=['GET']) #Obtener todos los archivos medicos
+@jwt_required()
+def get_files():
+    user_id = get_jwt_identity() # Obtener el id del usuario autenticado
+    files = Medical_file.query.filter_by(user_id=user_id).all() # Filtrar los archivos médicos por el id del usuario
+    files = list(map(lambda file: file.serialize(), files))
+    return jsonify(files), 200

@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         headers: {
                             Authorization: `Bearer ${token}`,
                             'Content-Type': 'application/json'
-                            
+
                         }
                     }
 
@@ -298,6 +298,36 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                 }
             },
+
+            getFiles: async () => {
+                const store = getStore();
+
+                const token = store.currentUser?.access_token; // Obtén el token del usuario actual
+
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                };
+
+                try {
+                    const { API_URL } = getStore()
+                    const response = await fetch(`${API_URL}/api/medical-file`, options);
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        setStore({
+                            currentRecords: data,
+                        });
+                    } else {
+                        console.error('Error getting medical files:', data);
+                    }
+                } catch (error) {
+                    console.error('Error getting medical files:', error);
+                }
+            },
+
 
         }
     }

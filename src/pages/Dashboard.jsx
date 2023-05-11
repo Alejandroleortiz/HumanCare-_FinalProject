@@ -107,20 +107,36 @@ function Dashboard() {
                                             <table className="table table-hover table-nowrap">
                                                 <thead className="table-light">
                                                     <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">View</th>
-                                                        <th scope="col">File</th>
+                                                        <th scope="col">Filename</th>
                                                         <th scope="col">Date</th>
+                                                        <th scope="col">View</th>
                                                         <th scope="col">Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {/* Medical Records */}
 
-                                                    {/* Medical Recors */}
-                                                    <MedicalRecord />
+                                                    { // Mapeo de Records
 
-                                                    {/* Medical Recors */}
-                                                    <MedicalRecord />
+                                                        store?.currentRecords?.length > 0 ?
+                                                            store?.currentRecords?.map((data) => {
+                                                                console.log("aqui estoy", store?.currentRecords?.length);
+                                                                return (
+                                                                    <MedicalRecord
+                                                                        key={data.id}
+                                                                        id={data.id}
+                                                                        Filename={data.filename}
+                                                                        View={data.file}
+                                                                        Date={data.date}
+                                                                    />
+                                                                )
+                                                            })
+                                                            :
+                                                            (<>
+
+                                                            </>)
+                                                    }
+
 
                                                 </tbody>
                                             </table>

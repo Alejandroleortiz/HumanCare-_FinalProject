@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../components/layouts/Layout'
 import MedicalRecord from '../components/patients and records/MedicalRecord'
+import { GlobalContext } from '../store/AppContext';
 
 
 
 function MedicalRecords() {
+
+    const { state: { store, actions } } = useContext(GlobalContext);
+
+    useEffect(() => {
+        actions.getFiles();
+        // actions.deletePatient(); // Llama a la función getPatients aquí
+    }, []);
+
+
     return (
         <>
             <Layout includeSidebar>
@@ -19,17 +29,37 @@ function MedicalRecords() {
                             <table className="table table-hover table-nowrap">
                                 <thead className="table-light">
                                     <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">View</th>
-                                        <th scope="col">File</th>
+                                        <th scope="col">Filename</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">View</th>
                                         <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* Medical Recors */}
-                                    <MedicalRecord/>
-                                    <MedicalRecord/>
+                                    {/* Medical Records */}
+
+                                    { // Mapeo de Records
+
+                                        store?.currentRecords?.length > 0 ?
+                                            store?.currentRecords?.map((data) => {
+                                                console.log("aqui estoy", store?.currentRecords?.length);
+                                                return (
+                                                    <MedicalRecord
+                                                        key={data.id}
+                                                        id={data.id}
+                                                        Filename={data.filename}
+                                                        View = {data.file}
+                                                        Date={data.date}
+                                                    />
+                                                )
+                                            })
+                                            :
+                                            (<>
+
+                                            </>)
+                                    }
+
+
                                 </tbody>
                             </table>
 
