@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Layout from '../components/layouts/Layout'
 import PatientM from '../components/patients and records/PatientM'
 import { GlobalContext } from '../store/AppContext';
+import "../styles/index.css"
 
 
 
@@ -29,10 +30,11 @@ function Patients() {
                             <table className="table table-hover table-nowrap">
                                 <thead className="table-light">
                                     <tr>
-                                        <th scope="col">Full Name</th>
-                                        <th scope="col">Age</th>
-                                        <th scope="col">Treatment</th>
-                                        <th scope="col">Observations</th>
+                                        <th scope="col" className="invisible"></th>
+                                        <th scope="col" className="invisible01" >Full Name</th>
+                                        <th scope="col" className="invisible0">Age</th>
+                                        <th scope="col" className="invisible1">Treatment</th>
+                                        <th scope="col" className="invisible2">Observations</th>
                                         <th scope="col">View</th>
                                         {/* <th scope="col">Delete</th> */}
                                     </tr>
@@ -56,7 +58,7 @@ function Patients() {
                                                         Age={data.age}
                                                         Treatment={data.treatment}
                                                         Observations={data.observations}
-                                                        // Delete={actions?.deletePatient}
+                                                    // Delete={actions?.deletePatient}
                                                     />
                                                 )
                                             })
@@ -74,7 +76,7 @@ function Patients() {
                         </div>
                         <div className="card-footer border-0 py-5">
                             <span className="text-muted text-sm">
-                                Showing 10 items out of 250 results found
+                                Showing {store?.currentPatient?.length} items out of {store?.currentPatient?.length} results found
                             </span>
                         </div>
                     </div>

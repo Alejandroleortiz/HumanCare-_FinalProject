@@ -8,11 +8,13 @@ function PatientM({ Name, Age, Treatment, Observations}) {
       {/* Patient M */}
       <tr>
         <td>
-          <img
+        <img
             alt="avatar"
             src={Patient}
             className="avatar avatar-sm rounded-circle me-2"
           />
+        </td>
+        <td>
           <a className="text-heading font-semibold" href="#">
             {Name}
           </a>

@@ -48,7 +48,7 @@ function MedicalRecords() {
                                                         key={data.id}
                                                         id={data.id}
                                                         Filename={data.filename}
-                                                        View = {data.file}
+                                                        View={data.file}
                                                         Date={data.date}
                                                     />
                                                 )
@@ -66,7 +66,7 @@ function MedicalRecords() {
                         </div>
                         <div className="card-footer border-0 py-5">
                             <span className="text-muted text-sm">
-                                Showing 10 items out of 250 results found
+                                {store?.currentRecords?.length}
                             </span>
                         </div>
                     </div>

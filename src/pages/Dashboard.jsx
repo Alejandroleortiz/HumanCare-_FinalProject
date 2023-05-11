@@ -3,10 +3,10 @@ import Layout from '../components/layouts/Layout'
 import { useEffect, useState } from 'react';
 import { GlobalContext } from '../store/AppContext';
 import PatientM from '../components/patients and records/PatientM';
-import PatientF from '../components/patients and records/PatientF';
 import MedicalRecord from '../components/patients and records/MedicalRecord';
 import DataPatients from '../components/layouts-dashboard/DataPatients';
 import DataRecords from '../components/layouts-dashboard/DataRecords';
+import "../styles/index.css"
 
 
 
@@ -65,10 +65,11 @@ function Dashboard() {
 
                                                 <thead className="table-light">
                                                     <tr>
-                                                        <th scope="col">Full Name</th>
-                                                        <th scope="col">Age</th>
-                                                        <th scope="col">Treatment</th>
-                                                        <th scope="col">Observations</th>
+                                                        <th scope="col" className="invisible"></th>
+                                                        <th scope="col" className="invisible01" >Full Name</th>
+                                                        <th scope="col" className="invisible0">Age</th>
+                                                        <th scope="col" className="invisible1">Treatment</th>
+                                                        <th scope="col" className="invisible2">Observations</th>
                                                         <th scope="col">View</th>
                                                         {/* <th scope="col">Delete</th> */}
                                                     </tr>
@@ -78,9 +79,9 @@ function Dashboard() {
                                                     {/* Patient M */}
                                                     { // Mapeo de Pacientes
 
-                                                        store?.patients?.length > 0 ?
-                                                            store?.patients?.map((data) => {
-                                                                console.log("aqui estoy", store?.patients?.length);
+                                                        store?.currentPatient?.length > 0 ?
+                                                            store?.currentPatient?.map((data) => {
+                                                                console.log("aqui estoy", store?.currentPatient?.length);
                                                                 return (
                                                                     <PatientM
                                                                         key={data.id}
@@ -99,7 +100,11 @@ function Dashboard() {
                                                 </tbody>
 
                                             </table>
-
+                                            <div className="card-footer border-0 py-5">
+                                                <span className="text-muted text-sm">
+                                                    Showing {store?.currentPatient?.length} items out of {store?.currentPatient?.length} results found
+                                                </span>
+                                            </div>
                                         </>
                                     ) : (
                                         <>
@@ -141,18 +146,18 @@ function Dashboard() {
                                                 </tbody>
                                             </table>
 
-
+                                            <div className="card-footer border-0 py-5">
+                                                <span className="text-muted text-sm">
+                                                    Showing {store?.currentRecords?.length} items out of {store?.currentRecords?.length} results found
+                                                </span>
+                                            </div>
                                         </>
                                     )
                             }
 
 
                         </div>
-                        <div className="card-footer border-0 py-5">
-                            <span className="text-muted text-sm">
-                                Showing 10 items out of 250 results found
-                            </span>
-                        </div>
+
                     </div>
                 </div>
             </Layout>

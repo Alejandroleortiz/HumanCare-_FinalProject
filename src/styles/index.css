@@ -24,3 +24,23 @@
   height: 100vh;
   z-index: -1;
 }
+
+.invisible {
+  width: 60px; /* Ajusta el ancho del espacio en blanco según tus necesidades */
+}
+
+.invisible01 {
+  width: 150px; /* Ajusta el ancho del espacio en blanco según tus necesidades */
+}
+
+.invisible0 {
+  width: 50px; /* Ajusta el ancho del espacio en blanco según tus necesidades */
+}
+
+.invisible1 {
+  width: 300px; /* Ajusta el ancho del espacio en blanco según tus necesidades */
+}
+
+.invisible2 {
+  width: 600px; /* Ajusta el ancho del espacio en blanco según tus necesidades */
+}
