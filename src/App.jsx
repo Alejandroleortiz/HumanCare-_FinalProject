@@ -16,6 +16,7 @@ import injectContext, { GlobalContext } from './store/AppContext'
 
 import { useContext } from 'react'
 import AddRecords from './pages/AddRecords'
+import ChatBot from './pages/ChatBot'
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
         <Route path='/medical-records' element={<ProtectedRoute currentUser={currentUser}><MedicalRecords /></ProtectedRoute>} />
         <Route path='/add-records' element={<ProtectedRoute currentUser={currentUser}><AddRecords /></ProtectedRoute>} />
         <Route path='/patients' element={<ProtectedRoute currentUser={currentUser}><Patients /></ProtectedRoute>} />
+        <Route path='/chatbot' element={<ProtectedRoute currentUser={currentUser}><ChatBot /></ProtectedRoute>} />
         <Route path='/add-patients' element={<ProtectedRoute currentUser={currentUser}><AddPatient /></ProtectedRoute>} />
         <Route path='/profile' element={<ProtectedRoute currentUser={currentUser}><Profile /></ProtectedRoute>} />
         <Route path='/support' element={<ProtectedRoute currentUser={currentUser}><Support /></ProtectedRoute>} />

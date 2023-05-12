@@ -96,6 +96,11 @@ function Sidebar() {
                                                 </NavLink>
                                             </li>
                                             <li className="nav-item">
+                                                <NavLink className="nav-link" to="/chatbot">
+                                                    <i className="bi bi-chat-dots" /> Chatbot IA
+                                                </NavLink>
+                                            </li>
+                                            <li className="nav-item">
                                                 <NavLink className="nav-link" to="/support">
                                                     <i className="bi bi-info-circle" /> Support
                                                 </NavLink>
