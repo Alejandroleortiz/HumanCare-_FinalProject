@@ -36,7 +36,7 @@ function Patients() {
                                         <th scope="col" className="invisible1">Treatment</th>
                                         <th scope="col" className="invisible2">Observations</th>
                                         <th scope="col">View</th>
-                                        {/* <th scope="col">Delete</th> */}
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +58,7 @@ function Patients() {
                                                         Age={data.age}
                                                         Treatment={data.treatment}
                                                         Observations={data.observations}
-                                                    // Delete={actions?.deletePatient}
+                                                        deletePatient={actions.deletePatient}
                                                     />
                                                 )
                                             })

@@ -48,29 +48,18 @@ def get_patients():
     patients = list(map(lambda patient: patient.serialize(), patients))
     return jsonify(patients), 200
 
-@bpPatient.route('/patient/<int:id>', methods=['DELETE'])
-def delete_patient(id):
-    # Busca el usuario por su ID
+@bpPatient.route('/patient/<int:id>', methods=['DELETE']) #Obtener todos los archivos medicos
+@jwt_required()
+def delete_medical_record(id):
+    user_id = get_jwt_identity() # Obtener el id del usuario autenticado
     patient = Medical_record.query.get(id)
-
-    # Si no se encuentra el usuario, devuelve este mensaje
-    if not patient:
-        return jsonify({"msg": "patient not found"}), 404
-
-    # Eliminar el usuario de la base de datos
+    
+    if patient is None:
+        return jsonify({"msg":"No patient found with given id"}), 404
+    
+    if patient.user_id != user_id:
+        return jsonify({"msg":"Unathorized"}), 403 # Si el usuario no es el propietario del paciente, retorna un error 403.
+    
     patient.delete()
-
-    # Devuelve un mensaje de eliminacion exitosa
-    return jsonify({"msg": "patient successfully deleted"}), 200
-
-@bpPatient.route('/patient', methods=['DELETE'])
-def delete_all_patient():
-    # Busca el usuario por su ID
-    patients = Medical_record.query.all()
-    for patient in patients:
-    # Eliminar el pacientes de la base de datos
-        patients.delete(patient)
-    patients.commit()
-
-    # Devuelve un mensaje de eliminacion exitosa
-    return jsonify({"msg": "All patients successfully deleted"}), 200
+   
+    return jsonify({"msg":"Patient deleted"}), 200

@@ -231,6 +231,41 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+            deletePatient: async (id) => {
+                const store = getStore();
+
+                console.log("delete", id);
+                try {
+                    const { API_URL, currentPatient } = getStore()
+
+
+                    const token = store.currentUser?.access_token; // Obtén el token del usuario actual
+
+                    const options = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+
+                    const response = await fetch(`${API_URL}/api/patient/${id}`, options)
+                    const data = await response.json()
+
+                    if (data.msg == "Patient deleted") {
+
+                        const updatedPatient = store.currentPatient.filter(patient => patient.id !== id);  // filtrando los pacientes que no fueron eliminados;  // 
+
+                        setStore({
+                            currentPatient: updatedPatient  // actualizando los pacientes
+                        });
+                        console.log("Deleted");
+                    }
+
+                } catch (error) {
+                    console.log(error.message);
+                }
+            },
+
             //-----------------------------------------------------Actions Files -----------------------------------------------//
 
             uploadFile: async (e, navigate) => {
