@@ -65,12 +65,27 @@ def update_medical_file(id):
     
     return jsonify(archive.serialize()), 200
 
-
-
-@bpFile.route('/medical-file', methods=['GET']) #Obtener todos los archivos medicos
+@bpFile.route('/medical-file', methods=['GET']) #Obtener todos los files
 @jwt_required()
-def get_files():
-    user_id = get_jwt_identity() # Obtener el id del usuario autenticado
-    files = Medical_file.query.filter_by(user_id=user_id).all() # Filtrar los archivos médicos por el id del usuario
+def get_all_medical_files():
+    user_id = get_jwt_identity()
+    files = Medical_file.query.filter_by(user_id=user_id).all()
     files = list(map(lambda file: file.serialize(), files))
+
     return jsonify(files), 200
+
+@bpFile.route('/medical-file/<int:id>', methods=['DELETE']) #Obtener todos los archivos medicos
+@jwt_required()
+def delete_medical_file(id):
+    user_id = get_jwt_identity() # Obtener el id del usuario autenticado
+    file = Medical_file.query.get(id)
+    
+    if file is None:
+        return jsonify({"msg":"No file found with given id"}), 404
+    
+    if file.user_id != user_id:
+        return jsonify({"msg":"Unathorized"}), 403 # Si el usuario no es el propietario del archivo, retorna un error 403.
+    
+    file.delete()
+   
+    return jsonify({"msg":"File deleted"}), 200

@@ -133,6 +133,7 @@ function Dashboard() {
                                                                         Filename={data.filename}
                                                                         View={data.file}
                                                                         Date={data.date}
+                                                                        deleteFile={actions.deleteMedicalFile}
                                                                     />
                                                                 )
                                                             })

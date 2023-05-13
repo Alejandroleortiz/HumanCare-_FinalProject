@@ -15,6 +15,7 @@ function MedicalRecords() {
     }, []);
 
 
+
     return (
         <>
             <Layout includeSidebar>
@@ -50,6 +51,7 @@ function MedicalRecords() {
                                                         Filename={data.filename}
                                                         View={data.file}
                                                         Date={data.date}
+                                                        deleteFile={actions.deleteMedicalFile}
                                                     />
                                                 )
                                             })
@@ -66,7 +68,7 @@ function MedicalRecords() {
                         </div>
                         <div className="card-footer border-0 py-5">
                             <span className="text-muted text-sm">
-                                {store?.currentRecords?.length}
+                            Showing {store?.currentRecords?.length} items out of {store?.currentRecords?.length} results found
                             </span>
                         </div>
                     </div>

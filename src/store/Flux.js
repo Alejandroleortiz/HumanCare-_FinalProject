@@ -231,29 +231,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-
-
-            // deletePatient: async (id) => {
-            //     const { API_URL, actions:{getPatients} } = getStore();
-            //     const options = {
-            //         method: "DELETE",
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //         },
-            //     };
-
-            //     try {
-            //         const response = await fetch(`${API_URL}/api/patients/${id}`, options);
-
-            //         if (response.status === 200) {
-            //             getPatients(); // Llama a la función getPatients para actualizar la lista de pacientes
-            //         } else {
-            //             setError("Error trying to Delete");
-            //         }
-            //     } catch (error) {
-            //         console.log(error.message);
-            //     }
-            // },
             //-----------------------------------------------------Actions Files -----------------------------------------------//
 
             uploadFile: async (e, navigate) => {
@@ -343,6 +320,44 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+            deleteMedicalFile: async (id) => {
+                const store = getStore();
+                // const {getFiles} = getActions();
+
+                console.log("delete", id);
+                try {
+                    const { API_URL, currentRecords } = getStore()
+
+
+                    const token = store.currentUser?.access_token; // Obtén el token del usuario actual
+
+                    const options = {
+                        method: 'DELETE',
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+
+                    const response = await fetch(`${API_URL}/api/medical-file/${id}`, options)
+                    const data = await response.json()
+
+                    if (data.msg == "File deleted") {
+                        // getFiles();
+
+                        const updatedRecords = store.currentRecords.filter(record => record.id !== id);  // filtrando los registros que no fueron eliminados;  // filtrando los registros que no fueron eliminados
+
+                        setStore({
+                            currentRecords: updatedRecords  // actualizando los registros
+                        });
+                        console.log("Deleted");
+                    }
+
+
+
+                } catch (error) {
+                    console.log(error.message);
+                }
+            },
 
         }
     }

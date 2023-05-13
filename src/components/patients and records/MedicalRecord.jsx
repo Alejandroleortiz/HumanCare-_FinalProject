@@ -1,7 +1,13 @@
 import React from 'react'
 import Folders from '../../img/folders.svg'
 
-function MedicalRecord({Filename, View, Date}) {
+
+function MedicalRecord({Filename, View, Date, deleteFile, id}) {
+
+  const handleDelete = () => {
+    deleteFile(id)
+   };
+
   return (
     <>
       {/* Medical Recors */}
@@ -34,6 +40,7 @@ function MedicalRecord({Filename, View, Date}) {
           <button
             type="button"
             className="btn btn-sm btn-square btn-neutral text-danger-hover"
+            onClick={handleDelete}
           >
             <i className="bi bi-trash" />
           </button>
