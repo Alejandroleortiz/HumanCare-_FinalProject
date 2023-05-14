@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentPatient: null,
             currentRecords: null,
 
+
         },
         actions: {
 

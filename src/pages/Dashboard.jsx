@@ -81,7 +81,7 @@ function Dashboard() {
 
                                                         store?.currentPatient?.length > 0 ?
                                                             store?.currentPatient?.map((data) => {
-                                                                console.log("aqui estoy", store?.currentPatient?.length);
+                                                                
                                                                 return (
                                                                     <PatientM
                                                                         key={data.id}
@@ -126,7 +126,7 @@ function Dashboard() {
 
                                                         store?.currentRecords?.length > 0 ?
                                                             store?.currentRecords?.map((data) => {
-                                                                console.log("aqui estoy", store?.currentRecords?.length);
+                                                                
                                                                 return (
                                                                     <MedicalRecord
                                                                         key={data.id}

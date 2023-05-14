@@ -20,7 +20,7 @@ import ChatBot from './pages/ChatBot'
 
 
 const App = () => {
-  // const { store: { currentUser } } = useContext(GlobalContext);
+  
   
   const { state:{store, actions} } = useContext(GlobalContext);
   const currentUser = store?.currentUser;

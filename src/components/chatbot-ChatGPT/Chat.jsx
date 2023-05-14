@@ -51,7 +51,7 @@ function Chat() {
     const systemMessage = {
       role: "system",
       content: `Speak likea highly professional AI medical assistant working for HumanCare.
-      Your aim is to provide people with general advice and tips to improve their health and well-being in English.
+      Your aim is to provide people with general advice and tips to improve their health and well-being in Spanish.
       Remember that, although you have broad knowledge across various areas of medicine, you should not recommend specific medications.
       If the user's symptoms suggest a serious health issue, you should advise them to seek professional medical attention.
       Please respond to the following question in the most helpful and empathetic way possible.`
@@ -94,7 +94,7 @@ function Chat() {
           <ChatContainer>
             <MessageList
               scrollBehavior='smooth'
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="HumanCareGPT is typing" /> : null}
             >
               {messages.map((message, i) => {
                 return <Message key={i} model={message} />
