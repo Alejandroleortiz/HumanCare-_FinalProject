@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AddPatient from '../../img/add-patient.png'
 import { GlobalContext } from '../../store/AppContext';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../alerts/Alert';
 
 function PatientForm() {
 
@@ -19,6 +20,7 @@ function PatientForm() {
             <>
                 {/* Main */}
                 <main className="py-6 bg-surface-secondary my-5">
+
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-xl-7 mx-auto">
@@ -52,7 +54,6 @@ function PatientForm() {
                                 {/* Form */}
                                 <form onSubmit={(e) => {
                                     e.preventDefault();
-                                    console.log("estoy aqui");
                                     actions.addPatient(e, navigate)
                                 }} className="mb-6 my-5 card shadow border mt-4 mb-10 p-5">
 
