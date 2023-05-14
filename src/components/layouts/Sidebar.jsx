@@ -122,7 +122,7 @@ function Sidebar() {
                                 >
                                     Active Users
                                     <span className="badge bg-opacity-30 bg-success text-white rounded-pill d-inline-flex align-items-center ms-4">
-                                        1
+                                    1
                                     </span>
                                 </div>
                             </li>
