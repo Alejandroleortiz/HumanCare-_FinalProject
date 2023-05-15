@@ -203,11 +203,11 @@ const AccountPatient = () => {
               {/*------------------------------------------------------------ FILA 6 -------------------------------------------------------------------------- */}
 
               <div className="text-end mt-5">
-
-                <button type="button" className="btn btn-sm btn-danger me-2" >
-                  Cancel
-                </button>
-
+                <Link to='/'>
+                  <button type="button" className="btn btn-sm btn-danger me-2" >
+                    Cancel
+                  </button>
+                </Link>
 
                 <button type="submit" className="btn btn-sm btn-success">
                   Save
