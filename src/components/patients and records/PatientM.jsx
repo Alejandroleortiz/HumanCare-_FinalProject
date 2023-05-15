@@ -35,13 +35,13 @@ function PatientM({ Name, Age, Treatment, Observations, deletePatient, id }) {
             type="button"
             className="btn btn-sm btn-square btn-neutral text-danger-hover"
             data-bs-toggle="modal"
-            data-bs-target="#modal_example"
+            data-bs-target={`#modal_patient_${id}`}
           >
             <i className="bi bi-eye-fill" />
           </button>
 
          {/* -------------------------------------Modal -------------------------------------------- */}
-          <div class="modal" id="modal_example" tabindex="-1" aria-labelledby="modal_example" aria-hidden="true">
+          <div class="modal" id={`modal_patient_${id}`} tabindex="-1" aria-labelledby={`modal_patient_${id}`} aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content shadow-3">
                 <div class="modal-header">
