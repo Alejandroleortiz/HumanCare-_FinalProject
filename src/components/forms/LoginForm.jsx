@@ -31,7 +31,11 @@ function LoginForm() {
         <div className="container-fluid p-5 imagen-humancare">
             {
                 !!store.error && (
-                    <Alert color={"danger"} text={store.error.msg} className={""} />
+                    <Alert
+                        color={"danger"}
+                        text={store.error.msg}
+                        className={""}
+                    />
                 )
             }
 
