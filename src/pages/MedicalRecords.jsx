@@ -41,24 +41,20 @@ function MedicalRecords() {
 
                                     { // Mapeo de Records
 
-                                        store?.currentRecords?.length > 0 ?
-                                            store?.currentRecords?.map((data) => {
-                                                console.log("aqui estoy", store?.currentRecords?.length);
-                                                return (
-                                                    <MedicalRecord
-                                                        key={data.id}
-                                                        id={data.id}
-                                                        Filename={data.filename}
-                                                        View={data.file}
-                                                        Date={data.date}
-                                                        deleteFile={actions.deleteMedicalFile}
-                                                    />
-                                                )
-                                            })
-                                            :
-                                            (<>
-
-                                            </>)
+                                        store?.currentRecords?.length > 0 &&
+                                        store?.currentRecords?.map((data) => {
+                                            console.log("aqui estoy", store?.currentRecords?.length);
+                                            return (
+                                                <MedicalRecord
+                                                    key={data.id}
+                                                    id={data.id}
+                                                    Filename={data.filename}
+                                                    View={data.file}
+                                                    Date={data.date}
+                                                    deleteFile={actions.deleteMedicalFile}
+                                                />
+                                            )
+                                        })
                                     }
 
 
@@ -68,7 +64,7 @@ function MedicalRecords() {
                         </div>
                         <div className="card-footer border-0 py-5">
                             <span className="text-muted text-sm">
-                            Showing {store?.currentRecords?.length} items out of {store?.currentRecords?.length} results found
+                                Showing {store?.currentRecords?.length} items out of {store?.currentRecords?.length} results found
                             </span>
                         </div>
                     </div>

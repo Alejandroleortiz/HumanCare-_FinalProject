@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../styles/chatbot.css'
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from "@chatscope/chat-ui-kit-react"
 
-const API_KEY = "";
+// const API_KEY = "";
 
 function Chat() {
 
@@ -94,7 +94,7 @@ function Chat() {
           <ChatContainer>
             <MessageList
               scrollBehavior='smooth'
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="HumanCareGPT is typing" /> : null}
             >
               {messages.map((message, i) => {
                 return <Message key={i} model={message} />
