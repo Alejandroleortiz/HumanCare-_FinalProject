@@ -79,23 +79,33 @@ function Dashboard() {
                                                     {/* Patient M */}
                                                     { // Mapeo de Pacientes
 
-                                                        store?.currentPatient?.length > 0 ?
-                                                            store?.currentPatient?.map((data) => {
-                                                                console.log("aqui estoy", store?.currentPatient?.length);
-                                                                return (
-                                                                    <PatientM
-                                                                        key={data.id}
-                                                                        Name={data.full_name}
-                                                                        Age={data.age}
-                                                                        Treatment={data.treatment}
-                                                                        Observations={data.observations}
-                                                                        deletePatient={actions.deletePatient}
-                                                                    />
-                                                                )
-                                                            })
-                                                            :
-                                                            (<>
-                                                            </>)
+                                                        store?.currentPatient?.length > 0 &&
+                                                        store?.currentPatient?.map((data) => {
+                                                            console.log("aqui estoy", store?.currentPatient?.length);
+                                                            return (
+                                                                <PatientM
+                                                                    key={data.id}
+                                                                    id={data.id}
+                                                                    Name={data.full_name}
+                                                                    Age={data.age}
+                                                                    Treatment={data.treatment}
+                                                                    Observations={data.observations}
+                                                                    identityCard={data.identity_card}
+                                                                    Adress={data.adress}
+                                                                    phoneNumber={data.phone_number}
+                                                                    Reason={data.reason_for_consultation}
+                                                                    currentIllness={data.current_illness}
+                                                                    criminalRecords={data.criminal_record}
+                                                                    familyHistory={data.family_history}
+                                                                    surgicalHistory={data.surgical_history}
+                                                                    physicalExamination={data.physical_examination}
+                                                                    Diagnosis={data.diagnosis}
+                                                                    deletePatient={actions.deletePatient}
+
+
+                                                                />
+                                                            )
+                                                        })
                                                     }
 
                                                 </tbody>
@@ -124,24 +134,20 @@ function Dashboard() {
 
                                                     { // Mapeo de Records
 
-                                                        store?.currentRecords?.length > 0 ?
-                                                            store?.currentRecords?.map((data) => {
-                                                                console.log("aqui estoy", store?.currentRecords?.length);
-                                                                return (
-                                                                    <MedicalRecord
-                                                                        key={data.id}
-                                                                        id={data.id}
-                                                                        Filename={data.filename}
-                                                                        View={data.file}
-                                                                        Date={data.date}
-                                                                        deleteFile={actions.deleteMedicalFile}
-                                                                    />
-                                                                )
-                                                            })
-                                                            :
-                                                            (<>
-
-                                                            </>)
+                                                        store?.currentRecords?.length > 0 &&
+                                                        store?.currentRecords?.map((data) => {
+                                                            console.log("aqui estoy", store?.currentRecords?.length);
+                                                            return (
+                                                                <MedicalRecord
+                                                                    key={data.id}
+                                                                    id={data.id}
+                                                                    Filename={data.filename}
+                                                                    View={data.file}
+                                                                    Date={data.date}
+                                                                    deleteFile={actions.deleteMedicalFile}
+                                                                />
+                                                            )
+                                                        })
                                                     }
 
 
